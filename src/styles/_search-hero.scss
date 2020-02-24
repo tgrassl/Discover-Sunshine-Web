@@ -1,15 +1,11 @@
 $height: 340px;
 
 .search-hero {
-  display: none;
+  display: flex;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-image: url(https://images.unsplash.com/photo-1501862348429-dc69b017f297?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
-
-  @include tablet-desktop () {
-    display: flex;
-  }
 
   &__content {
     z-index: 50;

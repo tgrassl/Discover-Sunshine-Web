@@ -6,6 +6,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { ToggleButtonComponent } from './components/toggle-button/toggle-button.component';
 import { ImageCardComponent } from './components/image-card/image-card.component';
 import { ImageCardRowComponent } from './components/image-card-row/image-card-row.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { ImageCardRowComponent } from './components/image-card-row/image-card-ro
     NavComponent,
     ImageCardComponent,
     ImageCardRowComponent,
+    FooterComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -24,7 +26,8 @@ import { ImageCardRowComponent } from './components/image-card-row/image-card-ro
     ToggleButtonComponent,
     NavComponent,
     ImageCardComponent,
-    ImageCardRowComponent
+    ImageCardRowComponent,
+    FooterComponent
   ]
 })
 export class SharedModule {

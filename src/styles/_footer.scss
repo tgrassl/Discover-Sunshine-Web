@@ -1,46 +1,4 @@
-@import "./functions/_functions.scss";
-
 .footer {
-  background-color: var(--black);
-  padding: 3rem;
-  color: #fafafa;
-  clear: both;
-  min-height: 100px;
-  display: none;
-
-  @include tablet-desktop() {
-    display: block;
-  }
-
-  &__content {
-    max-width: var(--max-width-desktop);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr auto auto;
-  }
-
-  &__title {
-    width: 100%;
-    line-height: 1.2;
-    font-weight: 900;
-    margin-bottom: 1rem;
-    color: var(--orange);
-    @include fontSize(18px);
-  }
-
-  &__disclaimer {
-    color: var(--grey);
-    margin-top: 2rem;
-    grid-column: 1 / 4;
-  }
-
-  span {
-    @include fontSize(14px);
-  }
-
-  a {
-    margin-left: 2rem;
-    justify-self: end;
-    cursor: pointer;
-  }
+  background-color: var(--border);
+  margin-top: 2rem;
 }
