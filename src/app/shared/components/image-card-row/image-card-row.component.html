@@ -1,0 +1,11 @@
+<div class="content-container container-fluid">
+    <div class="desktop-only">
+        <h2>{{title}}</h2>
+
+        <div class="row">
+            <div class="col-xs-4" *ngFor="let card of cards">
+                <app-image-card [cardContent]="card"></app-image-card>
+            </div>
+        </div>
+    </div>
+</div>

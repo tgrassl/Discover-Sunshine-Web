@@ -10,7 +10,6 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [HomeComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     CommonModule,
     SharedModule,

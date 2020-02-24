@@ -15,7 +15,6 @@ import { SharedModule } from './shared/shared.module';
   declarations: [
     AppComponent,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     BrowserModule,
     AppRoutingModule,
