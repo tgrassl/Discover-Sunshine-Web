@@ -24,16 +24,12 @@
 .nav-button {
     display:inline-block;
     cursor: pointer;
+    transition: all .1s ease-in;
 
     &__text {
         font-weight: bold;
         @include fontSize(16px);
         color: var(--text);
-        transition: all .1s ease-in;
-
-        &:hover {
-            color: var(--text-hover);
-        }
     }
 
     &__icon {
@@ -41,8 +37,10 @@
         font-size: 1.5rem;
         margin-right: 5px;
         vertical-align: -2px;
+    }
 
-        &:hover {
+    &:hover {
+        .nav-button__icon, .nav-button__text {
             color: var(--text-hover);
         }
     }
