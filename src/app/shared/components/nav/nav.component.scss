@@ -1,0 +1,28 @@
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+
+    &__logo {
+        width: auto;
+        display: block;
+        height: 66px;
+    }
+
+    li {
+        display: flex;
+        margin-right: 1.5rem;
+    }
+}
+
+.navbar {
+    min-height: 70px;
+    max-height: 70px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
