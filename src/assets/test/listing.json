@@ -1,0 +1,40 @@
+[
+  {
+    "idlisting": 2,
+    "sleeps": 3,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "petsAllowed": false,
+    "detailPageUrl": "https://blabla",
+    "spaceArea": 73,
+    "price": 80,
+    "averageRating": 4.7,
+    "reviewCount": 23,
+    "headline": "Schönes Appartement am Meer in Puerto Pollensa",
+    "summary": "Geräumige, helle Selbstversorger-Ferienwohnung mit 3 SZ für Kurz- & Langzeitanmietungen im galizischen Dorf Vicedo im Nordwesten Spaniens. Gelegen in den obersten 2 Stockwerken eines eleganten, neuen vierstöckigen Gebäudes bietet sie herrliche Ausblicke auf das Dorf & die Umgebung. Das Dorf liegt an einer kleinen Bucht mit ruhigem Wasser, perfekt für Kinder, zum Schwimmen oder Kajakfahren. 3 schöne Sandstrände liegen fußläufig (5 Min, 5 Min, 15 Min) & Dutzende weitere Strände sind nur eine kurze Autofahrt entfernt. Man kann Kajaks & Kanus leihen & so die Bucht, den Fluss oder das Meer erkunden, Wanderungen in den Waldgebieten oder entlang der Küste/des Flusses unternehmen, auf ruhigen Landstraßen Fahrrad fahren oder am Pier angeln. Im Dorf gibt es Restaurants, Bars, Bäckerei, Fischhändler, kleine Supermärkte & viele weitere exzellente Fischrestaurants sind in der Nähe. Die alte Stadt Viveiro liegt 15 Min entfernt & hat einen Markt im Freien, viele Geschäfte & andere Annehmlichkeiten.",
+    "imageUrl": "https://odis.homeaway.com/odis/listing/c0e14d",
+    "latitude": 39.9083885,
+    "longitude": 3.0828391,
+    "propertyType": {
+      "type": "Ferienwohnung"
+    },
+    "pricePeriod": {
+      "period": "Nacht"
+    },
+    "PremiumBadge": {
+      "name": "Premium Partner"
+    },
+    "amenities": [
+      {
+        "name": "TV"
+      },
+      {
+        "name": "Pool"
+      }
+    ],
+    "availability": {
+      "start": "2020-01-07T09:43:03.153Z",
+      "end": "2020-05-07T09:43:03.153Z"
+    }
+  }
+]
