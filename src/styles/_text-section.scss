@@ -1,0 +1,33 @@
+.text-section {
+  margin: 6rem 0;
+  text-align: center;
+
+  &__title {
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+
+  &__subtitle {
+    font-size: 18px;
+    line-height: 24px;
+    color: var(--grey);
+    margin-bottom: 3rem;
+  }
+
+  &__text {
+    color: var(--text);
+    text-align: start;
+    line-height: normal;
+  }
+
+  &--split {
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    grid-column-gap: 2rem;
+    display: grid;
+  }
+
+}

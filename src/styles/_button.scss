@@ -1,0 +1,22 @@
+.button {
+    display: inline-block;
+    text-decoration: none;
+    background-color: var(--primary);
+    color: #fff;
+    text-align: center;
+    font-weight: 700;
+    font-size: .9rem;
+    font-family: inherit;
+    border-radius: 6px;
+    padding: 10px 15px;
+    margin: 0;
+    border: 1px solid var(--primary);
+    outline: none;
+    cursor: pointer;
+    width: auto;
+
+    &:hover {
+        color: var(--grey);
+        text-decoration: none;
+    }
+}

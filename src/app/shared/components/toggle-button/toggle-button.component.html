@@ -1,0 +1,7 @@
+<div class="toggle-button">
+    <input 
+    [(ngModel)]="isToggled"
+    (change)="handleToggleCheck($event)" type="checkbox" [id]="toggleId" name="toggle-button" class="switch-input">
+	<label [for]="toggleId" class="switch-label">{{text}} <span *ngIf="text" class="toggle--on">On</span><span *ngIf="text" class="toggle--off">Off</span></label>
+</div>
+

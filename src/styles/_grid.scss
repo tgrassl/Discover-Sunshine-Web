@@ -1,0 +1,63 @@
+@import "node_modules/flexboxgrid-sass/flexboxgrid";
+
+$flexboxgrid-grid-columns: 12;
+$flexboxgrid-gutter-width: 0 !default;
+$flexboxgrid-outer-margin: 0 !default;
+
+$flexboxgrid-breakpoints: sm 512px 512px, md 768px 768px, lg 1024px 1024px;
+
+// div[class^="col-"] {
+//     padding-right: 0;
+//     padding-left: 0;
+// }
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.hide {
+    display: none;
+}
+
+.middle {
+    align-self: center;
+}
+
+@include mobile() {
+    .hide-xs {
+        display: none;
+    }
+
+    .show-xs {
+        display: block;
+    }
+
+    .sticky-sm {
+        position: relative;
+    }
+}
+
+@include tablet() {
+    .hide-sm {
+        display: none;
+    }
+    
+    .show-xs {
+        display: none;
+    }
+
+    .sticky-sm {
+        position: sticky;
+    }
+}
+
+@include desktop() {
+    .show-xs {
+        display: none;
+    }
+
+    .sticky-sm {
+        position: sticky;
+    }
+}

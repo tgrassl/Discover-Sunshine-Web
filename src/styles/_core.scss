@@ -1,0 +1,90 @@
+@import "./variables";
+@import "./colors";
+@import "./grid";
+
+html {
+  color: var(--text);
+
+  @include mobile() {
+    ::-webkit-scrollbar-thumb,
+    ::-webkit-scrollbar,
+    ::-webkit-scrollbar-track {
+        display: none !important;
+        -webkit-appearance: none !important;
+        width: 0 !important;
+    }
+  }
+}
+
+body {
+  @include fontSize(16px);
+  background-color: var(--background);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2 {
+  font-weight: normal;
+  line-height: 1.3;
+}
+
+p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: var(--white);
+
+  &:hover {
+    text-decoration: underline;
+    color: var(--primary);
+  }
+}
+
+i {
+  vertical-align: middle;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.content-container {
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+.container-fluid {
+  padding: 0.1rem 2rem;
+}
+
+.sticky {
+  position: sticky;
+}
+
+input {
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.icon-button {
+  font-size: 2rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+
+  &:focus {
+    outline: none;
+  }
+}
