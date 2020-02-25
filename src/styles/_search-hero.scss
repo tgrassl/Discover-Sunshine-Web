@@ -21,11 +21,22 @@ $height: 340px;
     padding-top: 2rem;
     font-size: 2.4rem;
     font-weight: bold;
+
+    @include mobile() {
+      padding-top: 0;
+      font-size: 1.7rem;
+    }
   }
 
   &__search {
-    width: 680px;
+    width: 900px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 4rem;
+
+    @include mobile() {
+      width: 90vw;
+      margin-top: 0;
+    }
   }
 }

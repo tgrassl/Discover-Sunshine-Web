@@ -6,10 +6,12 @@ $flexboxgrid-outer-margin: 0 !default;
 
 $flexboxgrid-breakpoints: sm 512px 512px, md 768px 768px, lg 1024px 1024px;
 
-// div[class^="col-"] {
-//     padding-right: 0;
-//     padding-left: 0;
-// }
+.no-col-pad {
+    [class^="col-"] {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
 
 .row {
     margin-left: 0;

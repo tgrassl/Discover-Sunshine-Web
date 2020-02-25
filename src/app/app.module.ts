@@ -1,15 +1,14 @@
-import { NgxsModule } from '@ngxs/store';
-
+import { SearchState } from './shared/state/search/search.state';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsModule } from '@ngxs/store';
+import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
-import { ApplicationState } from './shared/state/application/application.state';
 import { SharedModule } from './shared/shared.module';
+import { ApplicationState } from './shared/state/application/application.state';
 
 @NgModule({
   declarations: [
@@ -20,8 +19,8 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     HttpClientModule,
     SharedModule,
-    NgxsModule.forRoot([ApplicationState],  { developmentMode: !environment.production })
-    //NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsModule.forRoot([ApplicationState, SearchState],  { developmentMode: !environment.production }),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

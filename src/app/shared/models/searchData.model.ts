@@ -1,4 +1,4 @@
-export interface ListingSearch {
+export interface SearchData {
     destination: string;
     start: Date;
     end: Date;

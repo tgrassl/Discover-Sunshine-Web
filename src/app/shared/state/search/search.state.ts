@@ -1,54 +1,57 @@
-import { GetVocabularyAction } from './search.actions';
-import { Action, NgxsOnInit, Selector, State, StateContext } from '@ngxs/store';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { catchError } from 'rxjs/operators';
 import { DataService } from '../../services/data.service';
-import { PendingStateTransitionAction, ErrorStateTransitionAction, SuccessStateTransitionAction } from '../application/application.actions';
+import { ErrorStateTransitionAction, PendingStateTransitionAction, SuccessStateTransitionAction } from '../application/application.actions';
+import { GetListingsAction, SetSearchDataAction, SetListingsAction } from './search.actions';
+import { Listing } from '../../models/listing.model';
+import { Injectable } from '@angular/core';
+import { SearchData } from '../../models/searchData.model';
 
 export interface SearchStateModel {
-  searchTerm?: string;
+  searchData?: SearchData;
+  listings?: Listing[];
 }
 
 @State<SearchStateModel>({
   name: 'search',
-  defaults: {
-    searchTerm: ''
-  }
 })
-export class SearchState implements NgxsOnInit {
+@Injectable()
+export class SearchState {
 
   constructor(private dataService: DataService) { }
 
-  // @Selector()
-  // static searchResults(state: SearchStateModel): VocabularyItem[] {
-  //   return state.searchResults;
-  // }
+  @Selector()
+  static listings(state: SearchStateModel): Listing[] {
+    return state.listings;
+  }
 
   @Selector()
-  static searchTerm(state: SearchStateModel): string {
-    return state.searchTerm;
+  static searchData(state: SearchStateModel): SearchData {
+    return state.searchData;
   }
 
-  ngxsOnInit(ctx?: StateContext<any>) {
-    ctx.dispatch(new GetVocabularyAction());
+  @Action(SetSearchDataAction)
+  setSearchTerm(ctx: StateContext<SearchStateModel>, action: SetSearchDataAction): void {
+    ctx.patchState({ searchData: action.searchData });
   }
 
-  // @Action(SetSearchTermAction)
-  // setSearchTerm(ctx: StateContext<SearchStateModel>, action: SetSearchTermAction): void {
-  //   ctx.patchState({ searchTerm: action.searchTerm });
-  // }
+  @Action(SetListingsAction)
+  setListings(ctx: StateContext<SearchStateModel>, action: SetListingsAction): void {
+    ctx.patchState({ listings: action.listings });
+  }
 
-  @Action(GetVocabularyAction)
+  @Action(GetListingsAction)
   getVocabulary(ctx: StateContext<SearchStateModel>): void {
     ctx.dispatch(new PendingStateTransitionAction());
-    this.dataService.getVocabulary().pipe(
+    const searchData = ctx.getState().searchData;
+    this.dataService.getListings(searchData).pipe(
       catchError(err => {
         ctx.dispatch(new ErrorStateTransitionAction());
         return throwError(err);
       }))
       .subscribe((data) => {
-        // ctx.dispatch(new SetVocabularyAction(data));
-        // ctx.dispatch(new GetShowcasedWordAction());
+        ctx.dispatch(new SetListingsAction(data));
         ctx.dispatch(new SuccessStateTransitionAction());
       });
   }

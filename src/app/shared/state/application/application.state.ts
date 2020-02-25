@@ -6,6 +6,7 @@ import {
   SuccessStateTransitionAction,
   NoResultsStateTransitionAction,
 } from './application.actions';
+import { Injectable } from '@angular/core';
 
 export enum APPLICATION_STATE {
   INITIAL = '[APPLICATION_STATE] Initial',
@@ -25,6 +26,7 @@ export interface ApplicationStateModel {
     applicationState: APPLICATION_STATE.INITIAL,
   }
 })
+@Injectable()
 export class ApplicationState {
 
   constructor() { }

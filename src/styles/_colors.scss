@@ -6,4 +6,29 @@
   --primary: #F49E23;
   --border: #F2F2F2;
   --background: #ffffff;
+
+  // Litepicker 
+  --litepickerBgColor: #fff;
+
+  --litepickerMonthHeaderTextColor: var(--text) !important;
+  --litepickerMonthButton: #9e9e9e;
+  --litepickerMonthButtonHover: var(--primary) !important;
+  --litepickerMonthWeekdayColor: #9e9e9e;
+
+  --litepickerDayColor: var(--text) !important;
+  --litepickerDayColorHover: var(--primary) !important;
+  --litepickerDayIsTodayColor: var(--primary) !important;
+  --litepickerDayIsInRange: #f49e2363 !important;
+  --litepickerDayIsLockedColor: #9e9e9e;
+  --litepickerDayIsBookedColor: #9e9e9e;
+  --litepickerDayIsStartColor: #fff;
+  --litepickerDayIsStartBg: var(--primary) !important;
+  --litepickerDayIsEndColor: #fff;
+  --litepickerDayIsEndBg: var(--primary) !important;
+  --litepickerDayWidth: 38px;
+
+  --litepickerButtonCancelColor: #fff;
+  --litepickerButtonCancelBg: #9e9e9e;
+  --litepickerButtonApplyColor: #fff;
+  --litepickerButtonApplyBg: var(--primary) !important;
 }

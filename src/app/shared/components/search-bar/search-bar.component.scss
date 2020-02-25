@@ -1,0 +1,62 @@
+@import "../../../../styles/functions/functions";
+
+.search-container {
+    background-color: var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-alt);
+    max-height: 58px;
+
+    @include mobile() {
+        max-height: 100%;
+    }
+
+    i {
+        color: var(--text);
+        font-size: 23px;
+        margin-right: 5px;
+    }
+
+    input {
+        color: var(--text);
+        font-weight: bold;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        padding-top: 4px;
+
+        ::placeholder {
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+.search-box {
+    width: auto;
+    padding: 10px;
+    display: flex;
+    position: relative;
+    background-color: var(--white);
+
+    &--border {
+        margin-right: 5px;
+
+        @include mobile() {
+            margin-right: 0;
+            border-bottom: 2px solid var(--border);
+        }
+    }
+}
+
+.search-button {
+    position: relative;
+    border-radius: 0px;
+    width: 102%;
+    font-size: 1rem;
+
+    i {
+        color: var(--white);
+        vertical-align: -2px;
+        margin-left: -15px;
+    }
+}

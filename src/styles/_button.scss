@@ -10,14 +10,14 @@
     border-radius: 6px;
     padding: 10px 15px;
     margin: 0;
-    border: 1px solid var(--primary);
+    border: none;
     outline: none;
     cursor: pointer;
     width: auto;
+    transition: all .2s ease-in;
 
     &:hover {
-        color: var(--grey);
-        text-decoration: none;
+        background-color: #c47f1c;
     }
 }
 
