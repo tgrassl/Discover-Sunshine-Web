@@ -43,7 +43,11 @@ export class SearchBarComponent implements OnInit {
   }
 
   public getGuestClass(): string {
-    return this.mapMode ? 'col-md-4' : 'col-md-2';
+    return this.mapMode ? 'col-md-3' : 'col-md-2';
+  }
+
+  public getDateClass(): string {
+    return this.mapMode ? 'col-md-5' : 'col-md-4';
   }
 
   public handleAddressChange(address: Address): void {

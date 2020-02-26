@@ -5,8 +5,8 @@
 </div>
 
 <sat-popover #popover
- [hasBackdrop]="isMobile"
- backdropClass="number-select-backdrop" 
+ hasBackdrop="isMobile"
+ [backdropClass]="isMobile ? 'number-select-backdrop' : ''" 
  [verticalAlign]="isMobile ? 'center' : 'below'" 
  horizontalAlign="center"
  [lockAlignment]="isMobile"

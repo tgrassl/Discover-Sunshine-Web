@@ -1,4 +1,4 @@
-<form [formGroup]="searchForm" class="search-container row no-col-pad middle-xs">
+<form [formGroup]="searchForm" class="search-container row no-col-pad middle-xs" [ngClass]="{'search-container--map': mapMode}">
     <div class="col-md-4 col-xs-12">
         <div class="search-box search-box--border">
             <i class='uil uil-location-point'></i>
@@ -10,7 +10,7 @@
             [formControl]="searchForm.get('destination.name')">
         </div>
     </div>
-    <div class="col-md-4 col-xs-12">
+    <div class="col-xs-12" [ngClass]="getDateClass()">
         <div class="search-box search-box--border">
             <i class='uil uil-calendar-alt'></i>
             <app-litepicker [parentControl]="searchForm.get('date')"></app-litepicker>
