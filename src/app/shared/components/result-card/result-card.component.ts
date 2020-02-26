@@ -1,7 +1,8 @@
-import { SetHighlightedListingAction } from './../../state/search/search.actions';
+import { Component, Input } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Listing } from './../../models/listing.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { SetHighlightedListingAction } from './../../state/search/search.actions';
+import { isMobile } from './../../util';
 
 @Component({
   selector: 'app-result-card',
@@ -37,10 +38,12 @@ export class ResultCardComponent {
   }
 
   public setHiglighted(isHiglighted: boolean) {
-    if (isHiglighted) {
-      this.store.dispatch(new SetHighlightedListingAction(this.listing));
-    } else {
-      this.store.dispatch(new SetHighlightedListingAction(null));
+    if(!isMobile) {
+      if (isHiglighted) {
+        this.store.dispatch(new SetHighlightedListingAction(this.listing));
+      } else {
+        this.store.dispatch(new SetHighlightedListingAction(null));
+      }
     }
   }
 }

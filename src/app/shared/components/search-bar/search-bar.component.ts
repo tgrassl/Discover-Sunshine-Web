@@ -7,6 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { Router } from '@angular/router';
 import { SearchState } from '../../state/search/search.state';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-bar',
@@ -17,6 +18,7 @@ import { SearchState } from '../../state/search/search.state';
 export class SearchBarComponent implements OnInit {
   private static MAX_GUESTS = 8;
   private static MIN_GUESTS = 1;
+  private static KEY_DEBOUNCE = 1000;
 
   @Input() mapMode = false;
 
@@ -28,7 +30,6 @@ export class SearchBarComponent implements OnInit {
   constructor(private store: Store, private router: Router) { }
 
   public ngOnInit(): void {
-
     this.searchForm = new FormGroup({
       destination: new FormGroup({
         name: new FormControl('', [Validators.required]),
@@ -44,6 +45,15 @@ export class SearchBarComponent implements OnInit {
     const previousSearch = this.store.selectSnapshot(SearchState.searchData);
     if (previousSearch) {
       this.searchForm.patchValue(previousSearch);
+    }
+
+    if (this.mapMode) {
+      this.searchForm.valueChanges
+      .pipe(debounceTime(SearchBarComponent.KEY_DEBOUNCE))
+      .subscribe(value => {
+        console.log(value)
+        this.submitForm();
+      });
     }
   }
 
