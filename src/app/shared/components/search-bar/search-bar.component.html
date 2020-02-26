@@ -1,7 +1,7 @@
 <form [formGroup]="searchForm" (ngSubmit)="submitForm()" class="search-container row no-col-pad middle-xs" [ngClass]="{'search-container--map': mapMode}">
     <div class="col-md-4 col-xs-12">
         <div class="search-box search-box--border">
-            <i class='uil uil-location-point'></i>
+            <i class='uil uil-location-point' [ngClass]="{'icon--invalid': showInvalidIcon()}"></i>
             <input class="search-box__destination" 
             ngx-google-places-autocomplete 
             [options]="placesOptions"

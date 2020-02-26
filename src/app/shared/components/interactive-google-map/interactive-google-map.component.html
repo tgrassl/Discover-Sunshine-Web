@@ -1,4 +1,4 @@
-<google-map #map height="92.5vh" width="100%" [center]="center" [options]="mapOptions" (boundsChanged)="handleBoundsChange()">
+<google-map #map height="92.5vh" width="100%" [options]="mapOptions">
     <map-marker #marker *ngFor="let marker of mapMarkers" [position]="marker.position"
         [options]="marker.options"></map-marker>
 </google-map>

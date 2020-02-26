@@ -18,6 +18,10 @@
         margin-right: 5px;
     }
 
+    .icon--invalid {
+        color: var(--red-dark);
+    }
+
     input {
         color: var(--text);
         font-weight: bold;
@@ -26,8 +30,16 @@
         overflow: hidden;
         padding-top: 4px;
 
-        ::placeholder {
+        &::placeholder {
             text-overflow: ellipsis;
+        }
+
+        &.ng-invalid.ng-touched {
+            color: var(--red-dark);
+
+            &::placeholder {
+                color: var(--red-dark);
+            }
         }
     }
 }
@@ -69,6 +81,14 @@
     &:hover, &:focus-within {
         border: 2px solid var(--primary);
         background-color: var(--primary);
+    }
+
+    &.ng-invalid {
+        border: 2px solid var(--red-dark);
+
+        &:hover, &:focus-within {
+            background-color: var(--border);
+        }
     }
 
     .search-box--border {

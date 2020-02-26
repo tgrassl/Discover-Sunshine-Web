@@ -48,6 +48,7 @@ export class SearchBarComponent implements OnInit {
     }
 
     if (this.mapMode) {
+      this.searchForm.markAllAsTouched();
       this.searchForm.valueChanges
       .pipe(debounceTime(SearchBarComponent.KEY_DEBOUNCE))
       .subscribe(() => {
@@ -95,5 +96,10 @@ export class SearchBarComponent implements OnInit {
       min: SearchBarComponent.MIN_GUESTS,
       default: 1
     };
+  }
+
+  public showInvalidIcon(): boolean {
+    const control = this.searchForm.get('destination');
+    return control.invalid && control.touched;
   }
 }
