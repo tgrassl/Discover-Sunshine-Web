@@ -2,6 +2,7 @@ import { SetSearchDataAction } from './../../state/search/search.actions';
 import { Store } from '@ngxs/store';
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Address } from 'ngx-google-places-autocomplete/objects/address';
 
 @Component({
   selector: 'app-search-bar',
@@ -15,18 +16,25 @@ export class SearchBarComponent implements OnInit {
 
   public searchForm: FormGroup;
 
+  public placesOptions = {
+    types: ['(regions)']
+  };
+
   constructor(private store: Store) { }
 
   public ngOnInit(): void {
     this.searchForm = new FormGroup({
-      destination: new FormControl('', [Validators.required]),
+      destination: new FormGroup({
+        name: new FormControl('', [Validators.required]),
+        lat: new FormControl('', [Validators.required]),
+        lng: new FormControl('', [Validators.required])
+      }),
       date: new FormControl({}, [Validators.required]),
-      guests: new FormControl(null, [Validators.required, Validators.max(8)])
+      guests: new FormControl('', [Validators.required, Validators.max(8)])
     });
   }
 
   public submitForm(): void {
-    console.log(this.searchForm.valid, this.searchForm.value);
     this.store.dispatch(new SetSearchDataAction(this.searchForm.value));
   }
 
@@ -34,4 +42,16 @@ export class SearchBarComponent implements OnInit {
     return this.mapMode ? 'col-md-4' : 'col-md-2';
   }
 
+  public handleAddressChange(address: Address): void {
+    const placesLocation = {
+      name: address.formatted_address,
+      lat: this.convertLocation(address.geometry.location.lat()),
+      lng: this.convertLocation(address.geometry.location.lng())
+    };
+    this.searchForm.controls.destination.setValue(placesLocation);
+  }
+
+  private convertLocation(val) {
+    return Number(val.toPrecision(11));
+  }
 }

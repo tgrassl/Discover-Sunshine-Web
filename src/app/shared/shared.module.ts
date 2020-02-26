@@ -2,13 +2,14 @@ import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { NavComponent } from './components/nav/nav.component';
-import { ToggleButtonComponent } from './components/toggle-button/toggle-button.component';
-import { ImageCardComponent } from './components/image-card/image-card.component';
-import { ImageCardRowComponent } from './components/image-card-row/image-card-row.component';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { FooterComponent } from './components/footer/footer.component';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { ImageCardRowComponent } from './components/image-card-row/image-card-row.component';
+import { ImageCardComponent } from './components/image-card/image-card.component';
 import { LitepickerComponent } from './components/litepicker/litepicker.component';
+import { NavComponent } from './components/nav/nav.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { ToggleButtonComponent } from './components/toggle-button/toggle-button.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { LitepickerComponent } from './components/litepicker/litepicker.componen
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    GooglePlaceModule,
   ],
   exports: [
     ToggleButtonComponent,

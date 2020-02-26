@@ -2,13 +2,18 @@
     <div class="col-md-4 col-xs-12">
         <div class="search-box search-box--border">
             <i class='uil uil-location-point'></i>
-            <input class="search-box__destination" type="text" placeholder="Urlaubsort" formControlName="destination">
+            <input class="search-box__destination" 
+            ngx-google-places-autocomplete 
+            [options]="placesOptions"
+            (onAddressChange)="handleAddressChange($event)"
+            placeholder="Urlaubsort" 
+            [formControl]="searchForm.get('destination.name')">
         </div>
     </div>
     <div class="col-md-4 col-xs-12">
         <div class="search-box search-box--border">
             <i class='uil uil-calendar-alt'></i>
-            <app-litepicker [control]="searchForm.get('date')"></app-litepicker>
+            <app-litepicker [parentControl]="searchForm.get('date')"></app-litepicker>
         </div>
     </div>
     <div class="col-xs-12" [ngClass]="getGuestClass()">
@@ -18,7 +23,7 @@
         </div>
     </div>
     <div class="col-md-2 col-xs-12" *ngIf="!mapMode">
-        <button class="search-button button" type="submit" (click)="submitForm()">
+        <button class="search-button button" type="submit" (click)="submitForm()" [disabled]="!searchForm.valid">
             <i class='uil uil-search'></i>
             <span>Suchen</span>
         </button>

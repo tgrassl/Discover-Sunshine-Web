@@ -1,3 +1,4 @@
+import { AuthState } from './shared/state/auth/auth.state';
 import { SearchState } from './shared/state/search/search.state';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -19,7 +20,7 @@ import { ApplicationState } from './shared/state/application/application.state';
     AppRoutingModule,
     HttpClientModule,
     SharedModule,
-    NgxsModule.forRoot([ApplicationState, SearchState],  { developmentMode: !environment.production }),
+    NgxsModule.forRoot([ApplicationState, SearchState, AuthState],  { developmentMode: !environment.production }),
     NgxsReduxDevtoolsPluginModule.forRoot(),
   ],
   providers: [],

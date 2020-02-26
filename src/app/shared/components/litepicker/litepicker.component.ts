@@ -12,7 +12,7 @@ import * as moment from 'moment';
 })
 export class LitepickerComponent implements OnInit, AfterViewInit {
 
-  @Input() control: FormControl;
+  @Input() parentControl: FormControl;
 
   @ViewChild('litepicker', { read: ElementRef, static: true }) pickerRef: ElementRef;
 
@@ -56,6 +56,6 @@ export class LitepickerComponent implements OnInit, AfterViewInit {
       start: moment(date1),
       end: moment(date2)
     };
-    this.control.patchValue(dateValue);
+    this.parentControl.patchValue(dateValue);
   }
 }
