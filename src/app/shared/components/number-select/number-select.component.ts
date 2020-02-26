@@ -1,8 +1,11 @@
+import { isMobile } from './../../util';
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 export interface NumberSelectConfig {
   rows: SelectRow[];
+  max: number;
+  min: number;
 }
 
 interface SelectRow {
@@ -25,6 +28,7 @@ export class NumberSelectComponent implements OnInit {
   public isSelectOpen = false;
   public selectValues = {};
   public mappedConfig;
+  public isMobile = isMobile;
 
   constructor() { }
 
@@ -39,9 +43,12 @@ export class NumberSelectComponent implements OnInit {
   public increase(id: string): void {
     const selectVal = this.selectValues[id];
     const currVal = this.parentControl.value;
-    const newVal = currVal + 1;
-    this.parentControl.patchValue(newVal);
-    this.selectValues[id] = selectVal + 1;
+
+    if (currVal < this.config.max) {
+      const newVal = currVal + 1;
+      this.parentControl.patchValue(newVal);
+      this.selectValues[id] = selectVal + 1;
+    }
   }
 
   public decrease(id: string): void {

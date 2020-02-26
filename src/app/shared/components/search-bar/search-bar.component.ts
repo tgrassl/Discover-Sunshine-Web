@@ -12,11 +12,12 @@ import { Address } from 'ngx-google-places-autocomplete/objects/address';
   encapsulation: ViewEncapsulation.None
 })
 export class SearchBarComponent implements OnInit {
+  private static MAX_GUESTS = 8;
+  private static MIN_GUESTS = 1;
 
   @Input() mapMode = false;
 
   public searchForm: FormGroup;
-
   public placesOptions = {
     types: ['(regions)']
   };
@@ -31,7 +32,9 @@ export class SearchBarComponent implements OnInit {
         lng: new FormControl('', [Validators.required])
       }),
       date: new FormControl({}, [Validators.required]),
-      guests: new FormControl(0, [Validators.required, Validators.max(8)])
+      guests: new FormControl(0, [Validators.required, 
+        Validators.max(SearchBarComponent.MAX_GUESTS), 
+        Validators.min(SearchBarComponent.MIN_GUESTS)])
     });
   }
 
@@ -61,7 +64,9 @@ export class SearchBarComponent implements OnInit {
       rows: [
         {single: 'Erwachsener', multiple: 'Erwachsene'},
         {single: 'Kind', multiple: 'Kinder'}
-      ]
+      ],
+      max: SearchBarComponent.MAX_GUESTS,
+      min: SearchBarComponent.MIN_GUESTS,
     };
   }
 }
