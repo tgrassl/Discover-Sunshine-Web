@@ -7,7 +7,6 @@ import { ErrorStateTransitionAction, PendingStateTransitionAction, SuccessStateT
 import { GetListingsAction, SetSearchDataAction, SetListingsAction } from './search.actions';
 import { Listing } from '../../models/listing.model';
 import { Injectable } from '@angular/core';
-import { SearchData } from '../../models/searchData.model';
 import { Router } from '@angular/router';
 
 export interface SearchStateModel {

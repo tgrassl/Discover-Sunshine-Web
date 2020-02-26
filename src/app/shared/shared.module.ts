@@ -12,6 +12,8 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { ToggleButtonComponent } from './components/toggle-button/toggle-button.component';
 import { NumberSelectComponent } from './components/number-select/number-select.component';
 import { SatPopoverModule } from '@ncstate/sat-popover';
+import { InteractiveGoogleMapComponent } from './components/interactive-google-map/interactive-google-map.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { SatPopoverModule } from '@ncstate/sat-popover';
     SearchBarComponent,
     LitepickerComponent,
     NumberSelectComponent,
+    InteractiveGoogleMapComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -32,6 +35,7 @@ import { SatPopoverModule } from '@ncstate/sat-popover';
     ReactiveFormsModule,
     GooglePlaceModule,
     SatPopoverModule,
+    GoogleMapsModule,
   ],
   exports: [
     ToggleButtonComponent,
@@ -40,6 +44,8 @@ import { SatPopoverModule } from '@ncstate/sat-popover';
     ImageCardRowComponent,
     FooterComponent,
     SearchBarComponent,
+    NumberSelectComponent,
+    InteractiveGoogleMapComponent,
   ]
 })
 export class SharedModule {

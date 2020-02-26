@@ -1,0 +1,21 @@
+.gmnoprint:nth-child(1)  {
+    > div {
+        border-radius: 8px !important;
+        width: 30px !important;
+        height: 60px !important;
+
+        > div {
+            margin: 0 !important;
+        }
+    }
+
+    img {
+        height: 12px !important;
+        width: 12px !important;
+    }
+
+    button {
+        height: 30px !important;
+        width: 30px !important;
+    }
+}
