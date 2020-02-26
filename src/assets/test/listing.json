@@ -12,9 +12,351 @@
     "reviewCount": 23,
     "headline": "Schönes Appartement am Meer in Puerto Pollensa",
     "summary": "Geräumige, helle Selbstversorger-Ferienwohnung mit 3 SZ für Kurz- & Langzeitanmietungen im galizischen Dorf Vicedo im Nordwesten Spaniens. Gelegen in den obersten 2 Stockwerken eines eleganten, neuen vierstöckigen Gebäudes bietet sie herrliche Ausblicke auf das Dorf & die Umgebung. Das Dorf liegt an einer kleinen Bucht mit ruhigem Wasser, perfekt für Kinder, zum Schwimmen oder Kajakfahren. 3 schöne Sandstrände liegen fußläufig (5 Min, 5 Min, 15 Min) & Dutzende weitere Strände sind nur eine kurze Autofahrt entfernt. Man kann Kajaks & Kanus leihen & so die Bucht, den Fluss oder das Meer erkunden, Wanderungen in den Waldgebieten oder entlang der Küste/des Flusses unternehmen, auf ruhigen Landstraßen Fahrrad fahren oder am Pier angeln. Im Dorf gibt es Restaurants, Bars, Bäckerei, Fischhändler, kleine Supermärkte & viele weitere exzellente Fischrestaurants sind in der Nähe. Die alte Stadt Viveiro liegt 15 Min entfernt & hat einen Markt im Freien, viele Geschäfte & andere Annehmlichkeiten.",
-    "imageUrl": "https://odis.homeaway.com/odis/listing/c0e14d",
+    "imageUrl": "https://odis.homeaway.com/odis/listing/1e9d4c90-46c4-4ae2-8ffb-8db2a09cb127.c9.jpg",
     "latitude": 39.9083885,
     "longitude": 3.0828391,
+    "propertyType": {
+      "type": "Ferienwohnung"
+    },
+    "pricePeriod": {
+      "period": "Nacht"
+    },
+    "PremiumBadge": {
+      "name": "Premium Partner"
+    },
+    "amenities": [
+      {
+        "name": "TV"
+      },
+      {
+        "name": "Pool"
+      }
+    ],
+    "availability": {
+      "start": "2020-01-07T09:43:03.153Z",
+      "end": "2020-05-07T09:43:03.153Z"
+    }
+  },
+  {
+    "idlisting": 2,
+    "sleeps": 2,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "petsAllowed": false,
+    "detailPageUrl": "https://blabla",
+    "spaceArea": 73,
+    "price": 114,
+    "averageRating": 3.7,
+    "reviewCount": 14,
+    "headline": "Deluxe Ocean View",
+    "summary": "Geräumige, helle Selbstversorger-Ferienwohnung mit 3 SZ für Kurz- & Langzeitanmietungen im galizischen Dorf Vicedo im Nordwesten Spaniens. Gelegen in den obersten 2 Stockwerken eines eleganten, neuen vierstöckigen Gebäudes bietet sie herrliche Ausblicke auf das Dorf & die Umgebung. Das Dorf liegt an einer kleinen Bucht mit ruhigem Wasser, perfekt für Kinder, zum Schwimmen oder Kajakfahren. 3 schöne Sandstrände liegen fußläufig (5 Min, 5 Min, 15 Min) & Dutzende weitere Strände sind nur eine kurze Autofahrt entfernt. Man kann Kajaks & Kanus leihen & so die Bucht, den Fluss oder das Meer erkunden, Wanderungen in den Waldgebieten oder entlang der Küste/des Flusses unternehmen, auf ruhigen Landstraßen Fahrrad fahren oder am Pier angeln. Im Dorf gibt es Restaurants, Bars, Bäckerei, Fischhändler, kleine Supermärkte & viele weitere exzellente Fischrestaurants sind in der Nähe. Die alte Stadt Viveiro liegt 15 Min entfernt & hat einen Markt im Freien, viele Geschäfte & andere Annehmlichkeiten.",
+    "imageUrl": "https://odis.homeaway.com/odis/listing/524c69d6-1c89-4ca7-9116-055028c613ab.c6.jpg",
+    "latitude": 39.9053885,
+    "longitude": 3.0828291,
+    "propertyType": {
+      "type": "Ferienwohnung"
+    },
+    "pricePeriod": {
+      "period": "Nacht"
+    },
+    "PremiumBadge": {
+      "name": "Premium Partner"
+    },
+    "amenities": [
+      {
+        "name": "TV"
+      },
+      {
+        "name": "Pool"
+      }
+    ],
+    "availability": {
+      "start": "2020-01-07T09:43:03.153Z",
+      "end": "2020-05-07T09:43:03.153Z"
+    }
+  },
+  {
+    "idlisting": 2,
+    "sleeps": 2,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "petsAllowed": false,
+    "detailPageUrl": "https://blabla",
+    "spaceArea": 73,
+    "price": 120,
+    "averageRating": 2.4,
+    "reviewCount": 20,
+    "headline": "Deluxe Ocean View",
+    "summary": "Geräumige, helle Selbstversorger-Ferienwohnung mit 3 SZ für Kurz- & Langzeitanmietungen im galizischen Dorf Vicedo im Nordwesten Spaniens. Gelegen in den obersten 2 Stockwerken eines eleganten, neuen vierstöckigen Gebäudes bietet sie herrliche Ausblicke auf das Dorf & die Umgebung. Das Dorf liegt an einer kleinen Bucht mit ruhigem Wasser, perfekt für Kinder, zum Schwimmen oder Kajakfahren. 3 schöne Sandstrände liegen fußläufig (5 Min, 5 Min, 15 Min) & Dutzende weitere Strände sind nur eine kurze Autofahrt entfernt. Man kann Kajaks & Kanus leihen & so die Bucht, den Fluss oder das Meer erkunden, Wanderungen in den Waldgebieten oder entlang der Küste/des Flusses unternehmen, auf ruhigen Landstraßen Fahrrad fahren oder am Pier angeln. Im Dorf gibt es Restaurants, Bars, Bäckerei, Fischhändler, kleine Supermärkte & viele weitere exzellente Fischrestaurants sind in der Nähe. Die alte Stadt Viveiro liegt 15 Min entfernt & hat einen Markt im Freien, viele Geschäfte & andere Annehmlichkeiten.",
+    "imageUrl": "https://odis.homeaway.com/odis/listing/9cf731fd-5f40-4e6a-a828-b39645693330.c6.jpg",
+    "latitude": 39.9043885,
+    "longitude": 3.0828291,
+    "propertyType": {
+      "type": "Ferienwohnung"
+    },
+    "pricePeriod": {
+      "period": "Nacht"
+    },
+    "PremiumBadge": {
+      "name": "Premium Partner"
+    },
+    "amenities": [
+      {
+        "name": "TV"
+      },
+      {
+        "name": "Pool"
+      }
+    ],
+    "availability": {
+      "start": "2020-01-07T09:43:03.153Z",
+      "end": "2020-05-07T09:43:03.153Z"
+    }
+  },
+  {
+    "idlisting": 2,
+    "sleeps": 2,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "petsAllowed": false,
+    "detailPageUrl": "https://blabla",
+    "spaceArea": 73,
+    "price": 56,
+    "averageRating": 4.2,
+    "reviewCount": 8,
+    "headline": "Deluxe Ocean View",
+    "summary": "Geräumige, helle Selbstversorger-Ferienwohnung mit 3 SZ für Kurz- & Langzeitanmietungen im galizischen Dorf Vicedo im Nordwesten Spaniens. Gelegen in den obersten 2 Stockwerken eines eleganten, neuen vierstöckigen Gebäudes bietet sie herrliche Ausblicke auf das Dorf & die Umgebung. Das Dorf liegt an einer kleinen Bucht mit ruhigem Wasser, perfekt für Kinder, zum Schwimmen oder Kajakfahren. 3 schöne Sandstrände liegen fußläufig (5 Min, 5 Min, 15 Min) & Dutzende weitere Strände sind nur eine kurze Autofahrt entfernt. Man kann Kajaks & Kanus leihen & so die Bucht, den Fluss oder das Meer erkunden, Wanderungen in den Waldgebieten oder entlang der Küste/des Flusses unternehmen, auf ruhigen Landstraßen Fahrrad fahren oder am Pier angeln. Im Dorf gibt es Restaurants, Bars, Bäckerei, Fischhändler, kleine Supermärkte & viele weitere exzellente Fischrestaurants sind in der Nähe. Die alte Stadt Viveiro liegt 15 Min entfernt & hat einen Markt im Freien, viele Geschäfte & andere Annehmlichkeiten.",
+    "imageUrl": "https://odis.homeaway.com/odis/listing/524c69d6-1c89-4ca7-9116-055028c613ab.c6.jpg",
+    "latitude": 39.9053885,
+    "longitude": 3.0829291,
+    "propertyType": {
+      "type": "Ferienwohnung"
+    },
+    "pricePeriod": {
+      "period": "Nacht"
+    },
+    "PremiumBadge": {
+      "name": "Premium Partner"
+    },
+    "amenities": [
+      {
+        "name": "TV"
+      },
+      {
+        "name": "Pool"
+      }
+    ],
+    "availability": {
+      "start": "2020-01-07T09:43:03.153Z",
+      "end": "2020-05-07T09:43:03.153Z"
+    }
+  },
+  {
+    "idlisting": 2,
+    "sleeps": 2,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "petsAllowed": false,
+    "detailPageUrl": "https://blabla",
+    "spaceArea": 73,
+    "price": 90,
+    "averageRating": 4.7,
+    "reviewCount": 6,
+    "headline": "Deluxe Ocean View",
+    "summary": "Geräumige, helle Selbstversorger-Ferienwohnung mit 3 SZ für Kurz- & Langzeitanmietungen im galizischen Dorf Vicedo im Nordwesten Spaniens. Gelegen in den obersten 2 Stockwerken eines eleganten, neuen vierstöckigen Gebäudes bietet sie herrliche Ausblicke auf das Dorf & die Umgebung. Das Dorf liegt an einer kleinen Bucht mit ruhigem Wasser, perfekt für Kinder, zum Schwimmen oder Kajakfahren. 3 schöne Sandstrände liegen fußläufig (5 Min, 5 Min, 15 Min) & Dutzende weitere Strände sind nur eine kurze Autofahrt entfernt. Man kann Kajaks & Kanus leihen & so die Bucht, den Fluss oder das Meer erkunden, Wanderungen in den Waldgebieten oder entlang der Küste/des Flusses unternehmen, auf ruhigen Landstraßen Fahrrad fahren oder am Pier angeln. Im Dorf gibt es Restaurants, Bars, Bäckerei, Fischhändler, kleine Supermärkte & viele weitere exzellente Fischrestaurants sind in der Nähe. Die alte Stadt Viveiro liegt 15 Min entfernt & hat einen Markt im Freien, viele Geschäfte & andere Annehmlichkeiten.",
+    "imageUrl": "https://odis.homeaway.com/odis/listing/524c69d6-1c89-4ca7-9116-055028c613ab.c6.jpg",
+    "latitude": 39.9053885,
+    "longitude": 4.0828291,
+    "propertyType": {
+      "type": "Ferienwohnung"
+    },
+    "pricePeriod": {
+      "period": "Nacht"
+    },
+    "PremiumBadge": {
+      "name": "Premium Partner"
+    },
+    "amenities": [
+      {
+        "name": "TV"
+      },
+      {
+        "name": "Pool"
+      }
+    ],
+    "availability": {
+      "start": "2020-01-07T09:43:03.153Z",
+      "end": "2020-05-07T09:43:03.153Z"
+    }
+  },
+  {
+    "idlisting": 2,
+    "sleeps": 2,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "petsAllowed": false,
+    "detailPageUrl": "https://blabla",
+    "spaceArea": 73,
+    "price": 100,
+    "averageRating": 4.7,
+    "reviewCount": 10,
+    "headline": "Deluxe Ocean View",
+    "summary": "Geräumige, helle Selbstversorger-Ferienwohnung mit 3 SZ für Kurz- & Langzeitanmietungen im galizischen Dorf Vicedo im Nordwesten Spaniens. Gelegen in den obersten 2 Stockwerken eines eleganten, neuen vierstöckigen Gebäudes bietet sie herrliche Ausblicke auf das Dorf & die Umgebung. Das Dorf liegt an einer kleinen Bucht mit ruhigem Wasser, perfekt für Kinder, zum Schwimmen oder Kajakfahren. 3 schöne Sandstrände liegen fußläufig (5 Min, 5 Min, 15 Min) & Dutzende weitere Strände sind nur eine kurze Autofahrt entfernt. Man kann Kajaks & Kanus leihen & so die Bucht, den Fluss oder das Meer erkunden, Wanderungen in den Waldgebieten oder entlang der Küste/des Flusses unternehmen, auf ruhigen Landstraßen Fahrrad fahren oder am Pier angeln. Im Dorf gibt es Restaurants, Bars, Bäckerei, Fischhändler, kleine Supermärkte & viele weitere exzellente Fischrestaurants sind in der Nähe. Die alte Stadt Viveiro liegt 15 Min entfernt & hat einen Markt im Freien, viele Geschäfte & andere Annehmlichkeiten.",
+    "imageUrl": "https://odis.homeaway.com/odis/listing/524c69d6-1c89-4ca7-9116-055028c613ab.c6.jpg",
+    "latitude": 39.9063885,
+    "longitude": 3.0928291,
+    "propertyType": {
+      "type": "Ferienwohnung"
+    },
+    "pricePeriod": {
+      "period": "Nacht"
+    },
+    "PremiumBadge": {
+      "name": "Premium Partner"
+    },
+    "amenities": [
+      {
+        "name": "TV"
+      },
+      {
+        "name": "Pool"
+      }
+    ],
+    "availability": {
+      "start": "2020-01-07T09:43:03.153Z",
+      "end": "2020-05-07T09:43:03.153Z"
+    }
+  },
+  {
+    "idlisting": 2,
+    "sleeps": 2,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "petsAllowed": false,
+    "detailPageUrl": "https://blabla",
+    "spaceArea": 73,
+    "price": 80,
+    "averageRating": 4.7,
+    "reviewCount": 23,
+    "headline": "Deluxe Ocean View",
+    "summary": "Geräumige, helle Selbstversorger-Ferienwohnung mit 3 SZ für Kurz- & Langzeitanmietungen im galizischen Dorf Vicedo im Nordwesten Spaniens. Gelegen in den obersten 2 Stockwerken eines eleganten, neuen vierstöckigen Gebäudes bietet sie herrliche Ausblicke auf das Dorf & die Umgebung. Das Dorf liegt an einer kleinen Bucht mit ruhigem Wasser, perfekt für Kinder, zum Schwimmen oder Kajakfahren. 3 schöne Sandstrände liegen fußläufig (5 Min, 5 Min, 15 Min) & Dutzende weitere Strände sind nur eine kurze Autofahrt entfernt. Man kann Kajaks & Kanus leihen & so die Bucht, den Fluss oder das Meer erkunden, Wanderungen in den Waldgebieten oder entlang der Küste/des Flusses unternehmen, auf ruhigen Landstraßen Fahrrad fahren oder am Pier angeln. Im Dorf gibt es Restaurants, Bars, Bäckerei, Fischhändler, kleine Supermärkte & viele weitere exzellente Fischrestaurants sind in der Nähe. Die alte Stadt Viveiro liegt 15 Min entfernt & hat einen Markt im Freien, viele Geschäfte & andere Annehmlichkeiten.",
+    "imageUrl": "https://odis.homeaway.com/odis/listing/524c69d6-1c89-4ca7-9116-055028c613ab.c6.jpg",
+    "latitude": 39.9053885,
+    "longitude": 3.0828291,
+    "propertyType": {
+      "type": "Ferienwohnung"
+    },
+    "pricePeriod": {
+      "period": "Nacht"
+    },
+    "PremiumBadge": {
+      "name": "Premium Partner"
+    },
+    "amenities": [
+      {
+        "name": "TV"
+      },
+      {
+        "name": "Pool"
+      }
+    ],
+    "availability": {
+      "start": "2020-01-07T09:43:03.153Z",
+      "end": "2020-05-07T09:43:03.153Z"
+    }
+  },
+  {
+    "idlisting": 2,
+    "sleeps": 2,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "petsAllowed": false,
+    "detailPageUrl": "https://blabla",
+    "spaceArea": 73,
+    "price": 80,
+    "averageRating": 4.7,
+    "reviewCount": 23,
+    "headline": "Deluxe Ocean View",
+    "summary": "Geräumige, helle Selbstversorger-Ferienwohnung mit 3 SZ für Kurz- & Langzeitanmietungen im galizischen Dorf Vicedo im Nordwesten Spaniens. Gelegen in den obersten 2 Stockwerken eines eleganten, neuen vierstöckigen Gebäudes bietet sie herrliche Ausblicke auf das Dorf & die Umgebung. Das Dorf liegt an einer kleinen Bucht mit ruhigem Wasser, perfekt für Kinder, zum Schwimmen oder Kajakfahren. 3 schöne Sandstrände liegen fußläufig (5 Min, 5 Min, 15 Min) & Dutzende weitere Strände sind nur eine kurze Autofahrt entfernt. Man kann Kajaks & Kanus leihen & so die Bucht, den Fluss oder das Meer erkunden, Wanderungen in den Waldgebieten oder entlang der Küste/des Flusses unternehmen, auf ruhigen Landstraßen Fahrrad fahren oder am Pier angeln. Im Dorf gibt es Restaurants, Bars, Bäckerei, Fischhändler, kleine Supermärkte & viele weitere exzellente Fischrestaurants sind in der Nähe. Die alte Stadt Viveiro liegt 15 Min entfernt & hat einen Markt im Freien, viele Geschäfte & andere Annehmlichkeiten.",
+    "imageUrl": "https://odis.homeaway.com/odis/listing/524c69d6-1c89-4ca7-9116-055028c613ab.c6.jpg",
+    "latitude": 39.9053885,
+    "longitude": 3.0828291,
+    "propertyType": {
+      "type": "Ferienwohnung"
+    },
+    "pricePeriod": {
+      "period": "Nacht"
+    },
+    "PremiumBadge": {
+      "name": "Premium Partner"
+    },
+    "amenities": [
+      {
+        "name": "TV"
+      },
+      {
+        "name": "Pool"
+      }
+    ],
+    "availability": {
+      "start": "2020-01-07T09:43:03.153Z",
+      "end": "2020-05-07T09:43:03.153Z"
+    }
+  },
+  {
+    "idlisting": 2,
+    "sleeps": 2,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "petsAllowed": false,
+    "detailPageUrl": "https://blabla",
+    "spaceArea": 73,
+    "price": 80,
+    "averageRating": 4.7,
+    "reviewCount": 23,
+    "headline": "Deluxe Ocean View",
+    "summary": "Geräumige, helle Selbstversorger-Ferienwohnung mit 3 SZ für Kurz- & Langzeitanmietungen im galizischen Dorf Vicedo im Nordwesten Spaniens. Gelegen in den obersten 2 Stockwerken eines eleganten, neuen vierstöckigen Gebäudes bietet sie herrliche Ausblicke auf das Dorf & die Umgebung. Das Dorf liegt an einer kleinen Bucht mit ruhigem Wasser, perfekt für Kinder, zum Schwimmen oder Kajakfahren. 3 schöne Sandstrände liegen fußläufig (5 Min, 5 Min, 15 Min) & Dutzende weitere Strände sind nur eine kurze Autofahrt entfernt. Man kann Kajaks & Kanus leihen & so die Bucht, den Fluss oder das Meer erkunden, Wanderungen in den Waldgebieten oder entlang der Küste/des Flusses unternehmen, auf ruhigen Landstraßen Fahrrad fahren oder am Pier angeln. Im Dorf gibt es Restaurants, Bars, Bäckerei, Fischhändler, kleine Supermärkte & viele weitere exzellente Fischrestaurants sind in der Nähe. Die alte Stadt Viveiro liegt 15 Min entfernt & hat einen Markt im Freien, viele Geschäfte & andere Annehmlichkeiten.",
+    "imageUrl": "https://odis.homeaway.com/odis/listing/524c69d6-1c89-4ca7-9116-055028c613ab.c6.jpg",
+    "latitude": 39.9053885,
+    "longitude": 3.0828291,
+    "propertyType": {
+      "type": "Ferienwohnung"
+    },
+    "pricePeriod": {
+      "period": "Nacht"
+    },
+    "PremiumBadge": {
+      "name": "Premium Partner"
+    },
+    "amenities": [
+      {
+        "name": "TV"
+      },
+      {
+        "name": "Pool"
+      }
+    ],
+    "availability": {
+      "start": "2020-01-07T09:43:03.153Z",
+      "end": "2020-05-07T09:43:03.153Z"
+    }
+  },
+  {
+    "idlisting": 2,
+    "sleeps": 2,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "petsAllowed": false,
+    "detailPageUrl": "https://blabla",
+    "spaceArea": 73,
+    "price": 80,
+    "averageRating": 4.7,
+    "reviewCount": 23,
+    "headline": "Deluxe Ocean View",
+    "summary": "Geräumige, helle Selbstversorger-Ferienwohnung mit 3 SZ für Kurz- & Langzeitanmietungen im galizischen Dorf Vicedo im Nordwesten Spaniens. Gelegen in den obersten 2 Stockwerken eines eleganten, neuen vierstöckigen Gebäudes bietet sie herrliche Ausblicke auf das Dorf & die Umgebung. Das Dorf liegt an einer kleinen Bucht mit ruhigem Wasser, perfekt für Kinder, zum Schwimmen oder Kajakfahren. 3 schöne Sandstrände liegen fußläufig (5 Min, 5 Min, 15 Min) & Dutzende weitere Strände sind nur eine kurze Autofahrt entfernt. Man kann Kajaks & Kanus leihen & so die Bucht, den Fluss oder das Meer erkunden, Wanderungen in den Waldgebieten oder entlang der Küste/des Flusses unternehmen, auf ruhigen Landstraßen Fahrrad fahren oder am Pier angeln. Im Dorf gibt es Restaurants, Bars, Bäckerei, Fischhändler, kleine Supermärkte & viele weitere exzellente Fischrestaurants sind in der Nähe. Die alte Stadt Viveiro liegt 15 Min entfernt & hat einen Markt im Freien, viele Geschäfte & andere Annehmlichkeiten.",
+    "imageUrl": "https://odis.homeaway.com/odis/listing/524c69d6-1c89-4ca7-9116-055028c613ab.c6.jpg",
+    "latitude": 39.9053885,
+    "longitude": 3.0828291,
     "propertyType": {
       "type": "Ferienwohnung"
     },

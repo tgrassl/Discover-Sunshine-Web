@@ -1,3 +1,8 @@
+.map-container {
+    position: sticky !important;
+    top: var(--nav-height) !important;
+}
+
 .gmnoprint:nth-child(1)  {
     > div {
         border-radius: 8px !important;

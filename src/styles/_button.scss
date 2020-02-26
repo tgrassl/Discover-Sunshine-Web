@@ -17,7 +17,7 @@
     transition: all .2s ease-in;
 
     &:hover {
-        background-color: #e4931f;
+        background-color: var(--primary-dark);
     }
 }
 
@@ -25,7 +25,7 @@ button[disabled] {
     background-color: var(--grey);
 
     &:hover {
-        background-color:  var(--grey);
+        background-color: var(--grey);
     }
 }
 

@@ -1,8 +1,18 @@
 <div class="row">
-    <div class="col-xs-6">
-        <app-search-bar [mapMode]="true"></app-search-bar>
+    <div class="col-xs-12 col-md-6">
+        <div class="result-search-container">
+            <app-search-bar [mapMode]="true"></app-search-bar>
+        </div>
+
+        <div class="result-container container-fluid">
+            <div class="row no-col-pad">
+                <div class="col-xs-12" *ngFor="let listing of listings$ | async; trackBy: identify">
+                    <app-result-card [listing]="listing" [isLoading]="isLoading()"></app-result-card>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-xs-6 interactive-map">
-        <app-interactive-google-map></app-interactive-google-map>
+    <div class="col-md-6 hide-xs interactive-map">
+        <app-interactive-google-map [listings]="listings$ | async"></app-interactive-google-map>
     </div>
 </div>

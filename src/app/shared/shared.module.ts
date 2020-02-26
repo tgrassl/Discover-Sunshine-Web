@@ -14,6 +14,8 @@ import { NumberSelectComponent } from './components/number-select/number-select.
 import { SatPopoverModule } from '@ncstate/sat-popover';
 import { InteractiveGoogleMapComponent } from './components/interactive-google-map/interactive-google-map.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { ResultCardComponent } from './components/result-card/result-card.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     LitepickerComponent,
     NumberSelectComponent,
     InteractiveGoogleMapComponent,
+    ResultCardComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -36,6 +39,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     GooglePlaceModule,
     SatPopoverModule,
     GoogleMapsModule,
+    NgxSkeletonLoaderModule
   ],
   exports: [
     ToggleButtonComponent,
@@ -46,6 +50,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     SearchBarComponent,
     NumberSelectComponent,
     InteractiveGoogleMapComponent,
+    ResultCardComponent,
   ]
 })
 export class SharedModule {
