@@ -125,6 +125,7 @@ input {
 
     .container__months {
         box-shadow: var(--shadow) !important;
+        border-radius: 8px !important;
 
         @include mobile() {
             padding: 10px !important;

@@ -1,0 +1,33 @@
+.number-select-display {
+    color: var(--text);
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-top: 7px;
+    cursor: pointer;
+}
+
+.number-select {
+    margin-top: 5px;
+    padding: 2rem;
+    background-color: var(--background);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    min-width: 300px;
+
+    &__button {
+        font-size: 2.5rem;
+        cursor: pointer;
+        color: var(--text);
+        transition: color .1s ease-in;
+
+        &:hover {
+            color: var(--primary);
+        }
+    }
+
+    &__buttons {
+        display: flex;
+    }
+}

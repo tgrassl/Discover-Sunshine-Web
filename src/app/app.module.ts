@@ -1,6 +1,7 @@
 import { AuthState } from './shared/state/auth/auth.state';
 import { SearchState } from './shared/state/search/search.state';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
@@ -17,6 +18,8 @@ import { ApplicationState } from './shared/state/application/application.state';
   ],
   imports: [
     BrowserModule,
+    // BrowserAnimationsModule,
+    NoopAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     SharedModule,

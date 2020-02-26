@@ -10,6 +10,8 @@ import { LitepickerComponent } from './components/litepicker/litepicker.componen
 import { NavComponent } from './components/nav/nav.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { ToggleButtonComponent } from './components/toggle-button/toggle-button.component';
+import { NumberSelectComponent } from './components/number-select/number-select.component';
+import { SatPopoverModule } from '@ncstate/sat-popover';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { ToggleButtonComponent } from './components/toggle-button/toggle-button.
     FooterComponent,
     SearchBarComponent,
     LitepickerComponent,
+    NumberSelectComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -28,6 +31,7 @@ import { ToggleButtonComponent } from './components/toggle-button/toggle-button.
     FormsModule,
     ReactiveFormsModule,
     GooglePlaceModule,
+    SatPopoverModule,
   ],
   exports: [
     ToggleButtonComponent,

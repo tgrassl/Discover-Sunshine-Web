@@ -13,6 +13,10 @@ $flexboxgrid-breakpoints: sm 512px 512px, md 768px 768px, lg 1024px 1024px;
     }
 }
 
+[hidden] {
+    visibility: hidden !important;
+}
+
 .row {
     margin-left: 0;
     margin-right: 0;

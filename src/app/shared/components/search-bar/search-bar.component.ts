@@ -1,3 +1,4 @@
+import { NumberSelectConfig } from './../number-select/number-select.component';
 import { SetSearchDataAction } from './../../state/search/search.actions';
 import { Store } from '@ngxs/store';
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
@@ -30,7 +31,7 @@ export class SearchBarComponent implements OnInit {
         lng: new FormControl('', [Validators.required])
       }),
       date: new FormControl({}, [Validators.required]),
-      guests: new FormControl('', [Validators.required, Validators.max(8)])
+      guests: new FormControl(0, [Validators.required, Validators.max(8)])
     });
   }
 
@@ -53,5 +54,14 @@ export class SearchBarComponent implements OnInit {
 
   private convertLocation(val) {
     return Number(val.toPrecision(11));
+  }
+
+  public getGuestConfig(): NumberSelectConfig {
+    return {
+      rows: [
+        {single: 'Erwachsener', multiple: 'Erwachsene'},
+        {single: 'Kind', multiple: 'Kinder'}
+      ]
+    };
   }
 }

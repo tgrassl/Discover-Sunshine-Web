@@ -1,0 +1,26 @@
+<input hidden [readonly]="true" [formControl]="parentControl">
+
+<div class="number-select-display" [satPopoverAnchor]='popover' (click)="popover.toggle()">
+    {{getText('Gast', 'Gäste', parentControl.value)}}
+</div>
+
+<sat-popover #popover hasBackdrop verticalAlign="below" [autoFocus]="false">
+    <div class="number-select no-col-pad">
+        <div class="row middle-xs m-b-10" *ngFor="let row of mappedConfig">
+            <div class="col-xs-6">
+                <div class="number-select__title">{{getText(row.single, row.multiple, selectValues[row.id])}}</div>
+            </div>
+            <div class="col-xs-6">
+                <div class="number-select__buttons end-xs">
+                    <div class="number-select__button" (click)="increase(row.id)"><i class='uil uil-plus-circle'></i></div>
+                    <div class="number-select__button" (click)="decrease(row.id)"><i class='uil uil-minus-circle'></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="row end-xs">
+            <div class="col-xs-12">
+                <button class="button" (click)="popover.toggle()">Anwenden</button>
+            </div>
+        </div>
+    </div>
+</sat-popover>
