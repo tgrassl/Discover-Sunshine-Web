@@ -4,7 +4,7 @@ import { throwError } from 'rxjs/internal/observable/throwError';
 import { catchError, tap } from 'rxjs/operators';
 import { DataService } from '../../services/data.service';
 import { ErrorStateTransitionAction, PendingStateTransitionAction, SuccessStateTransitionAction } from '../application/application.actions';
-import { GetListingsAction, SetSearchDataAction, SetListingsAction } from './search.actions';
+import { GetListingsAction, SetSearchDataAction, SetListingsAction, SetHighlightedListingAction } from './search.actions';
 import { Listing } from '../../models/listing.model';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -12,10 +12,14 @@ import { Router } from '@angular/router';
 export interface SearchStateModel {
   searchData?: SearchData;
   listings?: Listing[];
+  highlightedListing?: Listing;
 }
 
 @State<SearchStateModel>({
   name: 'search',
+  defaults: {
+    highlightedListing: null
+  }
 })
 @Injectable()
 export class SearchState {
@@ -32,10 +36,20 @@ export class SearchState {
     return state.searchData;
   }
 
+  @Selector()
+  static highlightedListing(state: SearchStateModel): Listing {
+    return state.highlightedListing;
+  }
+
   @Action(SetSearchDataAction)
   setSearchData(ctx: StateContext<SearchStateModel>, action: SetSearchDataAction): void {
     ctx.patchState({ searchData: action.searchData });
     ctx.dispatch(new GetListingsAction());
+  }
+
+  @Action(SetHighlightedListingAction)
+  setHighlightedListing(ctx: StateContext<SearchStateModel>, action: SetHighlightedListingAction): void {
+    ctx.patchState({ highlightedListing: action.listing });
   }
 
   @Action(SetListingsAction)

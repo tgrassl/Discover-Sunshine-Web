@@ -7,6 +7,12 @@ export class GetListingsAction {
   static readonly type = `${prefix} Get Listings`;
 }
 
+
+export class SetHighlightedListingAction {
+  static readonly type = `${prefix} Set Highlighted Listing`;
+  constructor(public listing: Listing) { }
+}
+
 export class SetListingsAction {
   static readonly type = `${prefix} Set Listings`;
   constructor(public listings: Listing[]) { }

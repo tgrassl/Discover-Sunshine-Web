@@ -1,4 +1,4 @@
-<div class="result-card">
+<div class="result-card" (mouseenter)="setHiglighted(true)" (mouseleave)="setHiglighted(false)">
     <div class="row">
         <div class="col-md-5 col-xs-12">
             <img class="result-card__image" *ngIf="!isLoading" [src]="listing.imageUrl">

@@ -1,3 +1,5 @@
+import { SetHighlightedListingAction } from './../../state/search/search.actions';
+import { Store } from '@ngxs/store';
 import { Listing } from './../../models/listing.model';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -6,17 +8,14 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './result-card.component.html',
   styleUrls: ['./result-card.component.scss']
 })
-export class ResultCardComponent implements OnInit {
+export class ResultCardComponent {
 
   @Input() listing: Listing;
   @Input() isLoading: Listing;
 
   public isMarkedFavourite = false;
   
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  constructor(private store: Store) { }
 
   public getRating(): string[] {
     const stars = [];
@@ -37,4 +36,11 @@ export class ResultCardComponent implements OnInit {
     this.isMarkedFavourite = !this.isMarkedFavourite;
   }
 
+  public setHiglighted(isHiglighted: boolean) {
+    if (isHiglighted) {
+      this.store.dispatch(new SetHighlightedListingAction(this.listing));
+    } else {
+      this.store.dispatch(new SetHighlightedListingAction(null));
+    }
+  }
 }
