@@ -9,6 +9,11 @@
         width: auto;
         display: block;
         height: 66px;
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+        }
     }
 
     li {

@@ -1,9 +1,11 @@
+import { SearchData } from './../../models/searchData.model';
 import { NumberSelectConfig } from './../number-select/number-select.component';
 import { SetSearchDataAction } from './../../state/search/search.actions';
 import { Store } from '@ngxs/store';
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -22,7 +24,7 @@ export class SearchBarComponent implements OnInit {
     types: ['(regions)']
   };
 
-  constructor(private store: Store) { }
+  constructor(private store: Store, private router: Router) { }
 
   public ngOnInit(): void {
     this.searchForm = new FormGroup({
@@ -39,7 +41,11 @@ export class SearchBarComponent implements OnInit {
   }
 
   public submitForm(): void {
-    this.store.dispatch(new SetSearchDataAction(this.searchForm.value));
+    if (this.searchForm.valid) {
+      this.store.dispatch(new SetSearchDataAction(this.searchForm.value as SearchData));
+      this.router.navigateByUrl('map');
+    }
+
   }
 
   public getGuestClass(): string {

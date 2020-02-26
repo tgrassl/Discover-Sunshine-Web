@@ -1,6 +1,12 @@
 export interface SearchData {
-    destination: string;
+    destination: SearchDataDestination;
     start: Date;
     end: Date;
     guests: number;
+}
+
+export interface SearchDataDestination {
+    name: string;
+    lat: number;
+    lng: number;
 }

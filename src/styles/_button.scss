@@ -21,6 +21,14 @@
     }
 }
 
+button[disabled] {
+    background-color: var(--grey);
+
+    &:hover {
+        background-color:  var(--grey);
+    }
+}
+
 .nav-button {
     display:inline-block;
     cursor: pointer;
