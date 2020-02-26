@@ -50,8 +50,7 @@ export class SearchBarComponent implements OnInit {
     if (this.mapMode) {
       this.searchForm.valueChanges
       .pipe(debounceTime(SearchBarComponent.KEY_DEBOUNCE))
-      .subscribe(value => {
-        console.log(value)
+      .subscribe(() => {
         this.submitForm();
       });
     }

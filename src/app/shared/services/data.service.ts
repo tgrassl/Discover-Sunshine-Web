@@ -22,7 +22,7 @@ export class DataService {
       return this.http.get<Listing[]>('assets/test/listing.json');
   }
 
-  public getUser(uid: string): Observable<User> {
+  public getUser(uid: number): Observable<User> {
     return this.http.get<User>(this.getFullUrl('/user?uid=' + uid));
   }
 
@@ -38,8 +38,8 @@ export class DataService {
     return this.http.delete(this.getFullUrl('/deleteNote?nid=' + noteId));
   }
 
-  public login(email: string, pwd: string): Observable<User> {
-    return this.http.post<User>(this.getFullUrl('/login'), {email, pwd});
+  public login(email: string): Observable<any> {
+    return this.http.post<any>(this.getFullUrl('/checklogin'), {email});
   }
 
   public register(user: User): Observable<User> {

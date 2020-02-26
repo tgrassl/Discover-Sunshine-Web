@@ -4,14 +4,14 @@
     </div>
     <div class="hide-xs">
         <ul class="nav">
-            <li>
+            <li *ngIf="isLoggedIn$ | async">
                 <div class="nav-button">
                     <i class='uil uil-heart nav-button__icon'></i>
                     <span class="nav-button__text">Gespeichert</span>
                 </div>
             </li>
     
-            <li>
+            <li *ngIf="isLoggedIn$ | async">
                 <div class="nav-button">
                     <i class='uil uil-notes nav-button__icon'></i>
                     <span class="nav-button__text">Notizen</span>
@@ -19,9 +19,9 @@
             </li>
     
             <li>
-                <div class="nav-button">
+                <div class="nav-button" (click)="handleAuthButtonClick()">
                     <i class='uil uil-user nav-button__icon'></i>
-                    <span class="nav-button__text">Anmelden</span>
+                    <span class="nav-button__text">{{(isLoggedIn$ | async) ? 'Abmelden' : 'Anmelden'}}</span>
                 </div>
             </li>
         </ul>

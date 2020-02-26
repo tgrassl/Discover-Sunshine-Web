@@ -18,7 +18,7 @@ export class MapComponent implements OnInit, OnDestroy {
   private subs: Subscription[] = [];
   constructor(private store: Store) {
     //TODO remove later
-    this.store.dispatch(new GetListingsAction());
+    // this.store.dispatch(new GetListingsAction());
   }
 
   ngOnInit(): void {

@@ -8,12 +8,21 @@ export class SetUserAction {
   constructor(public user: User) { }
 }
 
+export class GetUserAction {
+  static readonly type = `${prefix} Get User`;
+  constructor(public id: number) { }
+}
+
 export class LoginAction {
   static readonly type = `${prefix} Login User`;
-  constructor(public searchData: SearchData) { }
+  constructor(public email: string, public pwd: string) { }
+}
+
+export class LogoutAction {
+  static readonly type = `${prefix} Logout User`;
 }
 
 export class RegisterAction {
-  static readonly type = `${prefix} Login User`;
+  static readonly type = `${prefix} Register User`;
   constructor(public newUser: User) { }
 }
