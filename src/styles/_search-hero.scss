@@ -1,4 +1,5 @@
 $height: 340px;
+$height-mobile: 430px;
 
 .search-hero {
   display: flex;
@@ -15,6 +16,12 @@ $height: 340px;
     max-height: $height;
     text-align: center;
     color: var(--white);
+
+    @include mobile() {
+      min-height: $height-mobile;
+      height: $height-mobile;
+      max-height: $height-mobile;
+    }
   }
 
   &__title {
@@ -23,8 +30,9 @@ $height: 340px;
     font-weight: bold;
 
     @include mobile() {
-      padding-top: 0;
-      font-size: 1.7rem;
+      width: 90vw;
+      margin: 0 auto;
+      font-size: 1.6rem;
     }
   }
 
@@ -35,8 +43,8 @@ $height: 340px;
     margin-top: 4rem;
 
     @include mobile() {
+      margin-top: 2rem;
       width: 90vw;
-      margin-top: 0;
     }
   }
 }

@@ -18,8 +18,12 @@
             </div>
             <div class="col-xs-6">
                 <div class="number-select__buttons end-xs">
-                    <div class="number-select__button" (click)="increase(row.id)"><i class='uil uil-plus-circle'></i></div>
-                    <div class="number-select__button" (click)="decrease(row.id)"><i class='uil uil-minus-circle'></i></div>
+                    <div class="number-select__button" 
+                    [ngClass]="{'number-select__button--disabled': canDisable(true)}"
+                    (click)="increase(row.id)"><i class='uil uil-plus-circle'></i></div>
+                    <div class="number-select__button" 
+                    [ngClass]="{'number-select__button--disabled': canDisable(false)}"
+                    (click)="decrease(row.id)"><i class='uil uil-minus-circle'></i></div>
                 </div>
             </div>
         </div>

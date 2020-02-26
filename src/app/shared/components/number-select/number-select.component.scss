@@ -8,6 +8,10 @@
     box-shadow: var(--shadow);
     min-width: 300px;
 
+    @include mobile() {
+        margin-top: -20%;
+    }
+
     &-display {
         color: var(--text);
         font-weight: bold;
@@ -36,9 +40,23 @@
         &:hover {
             color: var(--primary);
         }
+
+        &--disabled {
+            color: var(--grey);
+            cursor: default;
+
+            &:hover {
+                color: var(--grey);
+            }
+        }
     }
 
     &__buttons {
         display: flex;
+    }
+
+    &__title {
+        color: var(--text);
+        font-weight: bold;
     }
 }

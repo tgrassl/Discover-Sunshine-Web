@@ -32,7 +32,7 @@ export class SearchBarComponent implements OnInit {
         lng: new FormControl('', [Validators.required])
       }),
       date: new FormControl({}, [Validators.required]),
-      guests: new FormControl(0, [Validators.required, 
+      guests: new FormControl(1, [Validators.required, 
         Validators.max(SearchBarComponent.MAX_GUESTS), 
         Validators.min(SearchBarComponent.MIN_GUESTS)])
     });
@@ -67,6 +67,7 @@ export class SearchBarComponent implements OnInit {
       ],
       max: SearchBarComponent.MAX_GUESTS,
       min: SearchBarComponent.MIN_GUESTS,
+      default: 1
     };
   }
 }
