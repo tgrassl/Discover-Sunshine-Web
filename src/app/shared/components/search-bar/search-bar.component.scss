@@ -72,6 +72,18 @@
     }
 
     .search-box--border {
-        margin-right: 2px;;
+        margin-right: 2px;
+
+        @include mobile() {
+            margin-right: 0;
+        }
+    }
+
+    .number-select-display {
+        padding-top: 5px;
+    }
+
+    input {
+        padding-top: 0;
     }
 }
