@@ -1,4 +1,9 @@
 .footer {
   background-color: var(--border);
   margin-top: 2rem;
+
+  &--white {
+    background-color: var(--background);
+    margin-top: 0;
+  }
 }
