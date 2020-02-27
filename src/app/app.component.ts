@@ -8,11 +8,17 @@ import { ofActionDispatched, Actions } from '@ngxs/store';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private actions: Actions) { }
 
   public canShowNav() {
     return !(this.router.url.includes('login') || this.router.url.includes('register'));
+  }
+
+  ngOnInit() {
+    this.actions.pipe(ofActionDispatched(LogoutAction)).subscribe(() => {
+      this.router.navigate(['/']);
+    });
   }
 }

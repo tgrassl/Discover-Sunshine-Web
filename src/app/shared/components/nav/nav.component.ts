@@ -1,3 +1,4 @@
+import { isMobile } from './../../util';
 import { SetRedirectAction } from './../../state/auth/auth.actions';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
@@ -28,6 +29,10 @@ export class NavComponent {
     } else {
       this.store.dispatch(new SetRedirectAction(currPath));
       this.router.navigateByUrl('login');
+    }
+
+    if (isMobile) {
+      this.toggleMobileNav();
     }
   }
 
