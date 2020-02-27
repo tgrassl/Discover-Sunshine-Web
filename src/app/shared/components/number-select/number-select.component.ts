@@ -92,7 +92,7 @@ export class NumberSelectComponent implements OnInit {
   }
 
   public canDisable(increase): boolean {
-    const controlVal = this.parentControl.value;
+    const controlVal = this.parentControl.value.total;
     if (increase) {
       return controlVal === this.config.max;
     } else {
