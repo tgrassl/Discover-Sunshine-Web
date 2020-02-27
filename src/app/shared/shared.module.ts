@@ -16,6 +16,8 @@ import { InteractiveGoogleMapComponent } from './components/interactive-google-m
 import { GoogleMapsModule } from '@angular/google-maps';
 import { ResultCardComponent } from './components/result-card/result-card.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { AuthFormComponent } from './components/auth-form/auth-form.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     NumberSelectComponent,
     InteractiveGoogleMapComponent,
     ResultCardComponent,
+    AuthFormComponent,
+    LoadingSpinnerComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -51,6 +55,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     NumberSelectComponent,
     InteractiveGoogleMapComponent,
     ResultCardComponent,
+    AuthFormComponent,
   ]
 })
 export class SharedModule {

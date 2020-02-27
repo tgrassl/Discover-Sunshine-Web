@@ -8,6 +8,11 @@ export class SetUserAction {
   constructor(public user: User) { }
 }
 
+export class SetRedirectAction {
+  static readonly type = `${prefix} Set Redirect`;
+  constructor(public redirect: string) { }
+}
+
 export class GetUserAction {
   static readonly type = `${prefix} Get User`;
   constructor(public id: number) { }

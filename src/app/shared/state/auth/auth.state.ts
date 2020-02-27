@@ -1,31 +1,43 @@
-import { Injectable } from '@angular/core';
-import { Action, Selector, State, StateContext } from '@ngxs/store';
+import { Injectable, NgZone } from '@angular/core';
+import { Action, Selector, State, StateContext, NgxsOnInit, Actions, ofActionCompleted } from '@ngxs/store';
 import * as bcrypt from 'bcryptjs';
 import { throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, take } from 'rxjs/operators';
 import { User } from '../../models/user.model';
 import { DataService } from '../../services/data.service';
 import { PendingStateTransitionAction } from '../application/application.actions';
 import { ErrorStateTransitionAction, SuccessStateTransitionAction } from './../application/application.actions';
-import { GetUserAction, LoginAction, RegisterAction, SetUserAction, LogoutAction } from './auth.actions';
+import { GetUserAction, LoginAction, RegisterAction, SetUserAction, LogoutAction, SetRedirectAction } from './auth.actions';
+import * as moment from 'moment';
+import { Router } from '@angular/router';
 
 export interface AuthStateModel {
   user?: User;
   isLoggedIn: boolean;
+  redirectUrl?: string;
 }
 
 @State<AuthStateModel>({
   name: 'auth',
   defaults: {
+    user: null,
     isLoggedIn: false,
   }
 })
 @Injectable()
-export class AuthState {
+export class AuthState implements NgxsOnInit {
 
-  private static SALT_ROUNDS = 10;
+  private static MAX_ROUNDS = 10;
+  private static MIN_ROUNDS = 5;
+  private static STORAGE_KEY_TIME = 'lastLogin';
+  private static STORAGE_KEY_USER = 'userID';
 
-  constructor(private dataService: DataService) { }
+  constructor(
+    private dataService: DataService,
+    private actions: Actions,
+    private router: Router,
+    private ngZone: NgZone,
+  ) { }
 
   @Selector()
   static user(state: AuthStateModel): User {
@@ -37,14 +49,29 @@ export class AuthState {
     return state.isLoggedIn;
   }
 
+  @Selector()
+  static redirectUrl(state: AuthStateModel): string {
+    return state.redirectUrl;
+  }
+
+  public ngxsOnInit(ctx?: StateContext<any>): void {
+    this.retrieveSessionFromLocalStorage(ctx);
+  }
+
   @Action(SetUserAction)
   setUser(ctx: StateContext<AuthStateModel>, action: SetUserAction): void {
     ctx.patchState({ user: action.user });
   }
 
+  @Action(SetRedirectAction)
+  setRedirectUrl(ctx: StateContext<AuthStateModel>, action: SetRedirectAction): void {
+    ctx.patchState({ redirectUrl: action.redirect });
+  }
+
   @Action(LogoutAction)
   logout(ctx: StateContext<AuthStateModel>): void {
-    ctx.setState({ user: null, isLoggedIn: false});
+    ctx.setState({ user: null, isLoggedIn: false });
+    this.removeSessionFromLocalStorage();
   }
 
   @Action(GetUserAction)
@@ -68,38 +95,88 @@ export class AuthState {
         ctx.dispatch(new ErrorStateTransitionAction());
         return throwError(err);
       }))
-      .subscribe((data) => {
-        bcrypt.compare(action.pwd, data.pwd).then((result) => {
-          if (result) {
-            ctx.setState({ isLoggedIn: true });
-          } else {
-            ctx.dispatch(new ErrorStateTransitionAction());
-          }
-        });
-        ctx.dispatch(new SuccessStateTransitionAction());
+      .subscribe(async (data) => {
+        const result = await bcrypt.compare(action.pwd, data.pwd);
+        if (result) {
+          await ctx.dispatch(new GetUserAction(data.id));
+          await this.actions.pipe(ofActionCompleted(SetUserAction), take(1)).toPromise();
+          const user = ctx.getState().user;
+          ctx.patchState({ isLoggedIn: true });
+          this.saveSessionToLocalStorage(user);
+          ctx.dispatch(new SuccessStateTransitionAction());
+          this.redirectUser(ctx);
+        } else {
+          ctx.dispatch(new ErrorStateTransitionAction());
+        }
       });
   }
 
   @Action(RegisterAction)
-  registerAction(ctx: StateContext<AuthStateModel>, action: RegisterAction): void {
-    const newUser = action.newUser;
-    newUser.pwd = this.hashPassword(newUser.pwd);
-
+  async registerAction(ctx: StateContext<AuthStateModel>, action: RegisterAction) {
     ctx.dispatch(new PendingStateTransitionAction());
+    const newUser = action.newUser;
+    newUser.pwd = await this.hashPassword(newUser.pwd);
+
     this.dataService.register(newUser).pipe(
       catchError(err => {
         ctx.dispatch(new ErrorStateTransitionAction());
         return throwError(err);
       }))
-      .subscribe((data) => {
-        ctx.dispatch(new SetUserAction(data));
-        ctx.dispatch(new SuccessStateTransitionAction());
+      .subscribe(async (data) => {
+        await ctx.dispatch(new SetUserAction(data));
+        const user = ctx.getState().user;
+        if (user) {
+          ctx.patchState({ isLoggedIn: true });
+          this.saveSessionToLocalStorage(user);
+          ctx.dispatch(new SuccessStateTransitionAction());
+          this.redirectUser(ctx);
+        } else {
+          ctx.dispatch(new ErrorStateTransitionAction());
+        }
       });
   }
 
-  private hashPassword(pw: string): string {
-    return bcrypt.hash(pw, AuthState.SALT_ROUNDS).then((hash) => {
-      return hash;
+  private redirectUser(ctx: StateContext<AuthStateModel>): void {
+    const redirect = ctx.getState().redirectUrl;
+    this.ngZone.run(() => {
+      this.router.navigateByUrl(redirect);
     });
+  }
+
+  private saveSessionToLocalStorage(user: User): void {
+    localStorage.setItem(AuthState.STORAGE_KEY_TIME, moment().toISOString());
+    localStorage.setItem(AuthState.STORAGE_KEY_USER, user.id.toString());
+  }
+
+  private removeSessionFromLocalStorage(): void {
+    localStorage.removeItem(AuthState.STORAGE_KEY_TIME);
+    localStorage.removeItem(AuthState.STORAGE_KEY_USER);
+  }
+
+
+  private retrieveSessionFromLocalStorage(ctx: StateContext<AuthStateModel>) {
+    const lastLogin = localStorage.getItem(AuthState.STORAGE_KEY_TIME);
+
+    if (lastLogin) {
+      const lastLoginDate = moment(lastLogin);
+      const expirationDate = lastLoginDate.add(30, 'day');
+      const isExpired = moment().isSameOrAfter(expirationDate);
+
+      if (isExpired) {
+        this.removeSessionFromLocalStorage();
+      } else {
+        const userID = Number(localStorage.getItem(AuthState.STORAGE_KEY_USER));
+        ctx.dispatch(new GetUserAction(userID));
+        ctx.patchState({ isLoggedIn: true });
+      }
+    }
+  }
+
+  private async hashPassword(pw: string): Promise<string> {
+    return await bcrypt.hash(pw, this.getRandomSaltRounds());
+  }
+
+  private getRandomSaltRounds(): number {
+    return Math.floor(Math.random() * (AuthState.MAX_ROUNDS - AuthState.MIN_ROUNDS + 1) + AuthState.MIN_ROUNDS);
   }
 }

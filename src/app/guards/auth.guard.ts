@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { AuthState } from '../shared/state/auth/auth.state';
 
@@ -8,10 +8,21 @@ import { AuthState } from '../shared/state/auth/auth.state';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private store: Store) { }
+  constructor(private store: Store, private router: Router) { }
 
-  canActivate() {
+  canActivate(route: ActivatedRouteSnapshot) {
     const isAuthenticated = this.store.selectSnapshot(AuthState.isLoggedIn);
-    return isAuthenticated;
+
+    const currPath = route.routeConfig.path;
+    if (currPath.includes('login') || currPath.includes('register')) {
+      if (isAuthenticated) {
+        this.router.navigateByUrl('/');
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      return isAuthenticated;
+    }
   }
 }

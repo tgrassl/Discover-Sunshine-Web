@@ -15,14 +15,15 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   public getListings(search: SearchData): Observable<Listing[]> {
-      // return this.http.get<Listing[]>(
-      // this.getFullUrl(
-      //   `/listings?dest=${search.destination}&start=${search.start}&end=${search.end}&guests=${search.guests}`
-      // ));
-      return this.http.get<Listing[]>('assets/test/listing.json');
+    return this.http.get<Listing[]>('assets/test/listing.json');
+      return this.http.get<Listing[]>(
+      this.getFullUrl(
+        `/listings?dest=${search.destination}&start=${search.start}&end=${search.end}&guests=${search.guests}`
+      ));
   }
 
   public getUser(uid: number): Observable<User> {
+    return this.http.get<any>('assets/test/user.json');
     return this.http.get<User>(this.getFullUrl('/user?uid=' + uid));
   }
 
@@ -39,10 +40,12 @@ export class DataService {
   }
 
   public login(email: string): Observable<any> {
+    return this.http.get<any>('assets/test/checkLogin.json');
     return this.http.post<any>(this.getFullUrl('/checklogin'), {email});
   }
 
   public register(user: User): Observable<User> {
+    return this.http.get<any>('assets/test/user.json');
     return this.http.post<User>(this.getFullUrl('/register'), user);
   }
 
