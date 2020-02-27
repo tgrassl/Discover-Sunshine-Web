@@ -1,0 +1,47 @@
+@import '../../../../styles/functions/functions';
+
+.note-card {
+    background-color: var(--background);
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    padding: 2rem 1rem;
+    transition: all .2s ease-in;
+    cursor: pointer;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    height: 100%;
+    max-height: 290px;
+
+    @include mobile() {
+        margin-right: 0;
+        height: auto;
+    }
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-alt);
+    }
+
+    &__content {
+        max-height: 158px;
+
+        &::after {
+            content: "...";
+        }
+
+        @include mobile() {
+           overflow: hidden;
+        }
+    }
+
+    &__time {
+        @include fontSize(14px);
+        margin-bottom: .5rem;
+    }
+
+    &__title {
+        font-weight: bold;
+        @include fontSize(18px);
+        margin-bottom: .5rem;
+    }
+}

@@ -1,0 +1,11 @@
+<div class="note-card" [routerLink]="'/notes/' + note.id">
+    <div class="row col-xs-12">
+        <div class="note-card__time">{{getTimeFormat()}}</div>
+    </div>
+    <div class="row col-xs-12">
+        <div class="note-card__title">{{note.title}}</div>
+    </div>
+    <div class="row col-xs-12">
+        <div class="note-card__content">{{getPreviewText()}}</div>
+    </div>
+</div>
