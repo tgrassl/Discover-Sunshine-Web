@@ -17,6 +17,11 @@ export class UpdateNoteAction {
   constructor(public updatedNote: Note) { }
 }
 
+export class SetSelectedNoteAction {
+  static readonly type = `${prefix} Set Selected Note`;
+  constructor(public selectedNote: Note) { }
+}
+
 export class SetNotesAction {
   static readonly type = `${prefix} Set Notes`;
   constructor(public notes: Note[]) { }

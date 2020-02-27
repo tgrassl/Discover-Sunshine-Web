@@ -1,0 +1,84 @@
+@import "../../../../styles/functions/functions";
+
+.notes-details {
+    &__button {
+        margin-left: 1rem;
+        @include mobile() {
+            margin-left: 0;
+            margin-right: 1rem;
+
+            span {
+                display: none;
+            }
+        }
+    }
+
+    &__title {
+        background: var(--white);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+
+        &::placeholder {
+            color: #aaa;
+        }
+    }
+
+    &-header {
+        display: flex;
+    }
+
+    &__back {
+        margin-top: 4px;
+        font-size: 2rem;
+        cursor: pointer;
+        color: var(--text);
+        transition: color 0.2s ease-in;
+
+        &:hover {
+            color: var(--grey);
+        }
+    }
+
+    .material-icons {
+        vertical-align: -5px;
+        margin-right: 5px;
+
+        @include mobile() {
+            margin-right: 0;
+        }
+    }
+}
+
+.fr-box {
+    width: 100% !important;
+    box-shadow: var(--shadow) !important;
+    width: 100% !important;
+    box-shadow: var(--shadow) !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+
+    > div {
+        border-right: none !important;
+        border-left: none !important;
+    }
+
+    .fr-toolbar.fr-top {
+        border: none;
+        padding-top: 5px;
+    }
+
+    p {
+        font-size: 1rem !important;
+    }
+
+    .second-toolbar {
+        border: none;
+
+        a {
+            display: none;
+        }
+    }
+}

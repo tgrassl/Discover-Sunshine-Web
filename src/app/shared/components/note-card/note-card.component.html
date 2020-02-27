@@ -1,4 +1,4 @@
-<div class="note-card" [routerLink]="'/notes/' + note.id">
+<div class="note-card" [routerLink]="'/notes/' + note.id" (click)="selectNote()">
     <div class="row col-xs-12">
         <div class="note-card__time">{{getTimeFormat()}}</div>
     </div>

@@ -26,6 +26,22 @@
             display: none;
         }
     }
+
+    &--destructive {
+        background-color: var(--red);
+
+        &:hover {
+            background-color: var(--red-dark);
+        }
+    }
+
+    &--positive {
+        background-color: var(--success);
+
+        &:hover {
+            background-color: var(--success-dark);
+        }
+    }
 }
 
 button[disabled], .button--loading {

@@ -1,1 +1,50 @@
-<p>note-details works!</p>
+<div class="notes notes-details">
+    <div class="content-container container-fluid">
+        <div class="row middle-xs m-b-10">
+            <div class="col-xs-12" *ngIf="isError()">
+                <app-status-notification type="error" text="Fehler bei der Übertragung. Bitte versuche es später erneut."></app-status-notification>
+            </div>
+            <div class="col-xs-12 col-md-8">
+                <div class="notes-details-header">
+                    <div class="notes-details__back" (click)="navigateBack()">
+                        <i class="uil uil-arrow-left"></i>
+                    </div>
+                    <h2>Notiz {{getHeaderText()}}</h2>
+                </div>
+
+            </div>
+            <div class="col-xs-12 col-md-4 start-xs end-sm">
+                <ng-container *ngIf="detailView">
+                    <button class="button button--destructive notes-details__button"
+                     [class.button--loading]="isLoading()" 
+                     (click)="deleteNote()">
+                        <i class="material-icons" *ngIf="!isLoading()">delete</i>
+                        <app-loading-spinner [loading]="isLoading()"></app-loading-spinner>
+                        <span *ngIf="!isLoading()">Löschen</span>
+                    </button>
+                </ng-container>
+
+                <button class="button button--positive notes-details__button" 
+                [disabled]="isDisabled()" 
+                [class.button--loading]="isLoading()" 
+                (click)="saveNote()">
+                    <i class="material-icons" *ngIf="!isLoading()">save</i>
+                    <app-loading-spinner [loading]="isLoading()"></app-loading-spinner>
+                    <span *ngIf="!isLoading()">Speichern</span>
+                </button>
+            </div>
+        </div>
+
+        <form [formGroup]="noteForm">
+            <div class="row col-xs-12">
+                <input class="notes-details__title" type="text" placeholder="Title" formControlName="title">
+            </div>
+
+            <div class="row col-xs-12">
+                <textarea [froalaEditor]="editorOptions" formControlName="content"></textarea>
+            </div>
+        </form>
+    </div>
+</div>
+
+<app-footer [whiteMode]="true"></app-footer>
