@@ -1,0 +1,18 @@
+.status-notification {
+    padding: .5rem 1rem;
+    border-radius: 8px;
+    font-size: .8rem;
+    color: var(--white);
+
+    &--error {
+        background-color: var(--red);
+    }
+
+    &--success {
+        background-color: var(--success);
+    }
+
+    &--warning {
+        background-color: var(--warning);
+    }
+}

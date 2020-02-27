@@ -1,3 +1,4 @@
+import { SuccessStateTransitionAction } from './../../state/application/application.actions';
 import { ApplicationState, APPLICATION_STATE } from './../../state/application/application.state';
 import { User } from './../../models/user.model';
 import { LoginAction, RegisterAction } from './../../state/auth/auth.actions';
@@ -21,6 +22,7 @@ export class AuthFormComponent implements OnInit {
   constructor(private store: Store) { }
 
   ngOnInit(): void {
+    this.store.dispatch(new SuccessStateTransitionAction());
     this.getHelpText();
     this.authForm = new FormGroup({
       login: new FormGroup({
@@ -49,13 +51,15 @@ export class AuthFormComponent implements OnInit {
     const login = {
       text: 'Noch keinen Account?',
       url: '/register',
-      btn: 'Registrieren'
+      btn: 'Registrieren',
+      statusText: 'E-Mail oder Passwort falsch. Überprüfen Sie die Eingabe und versuchen es erneut.'
     };
 
     const register = {
       text: 'Bereits einen Account erstellt?',
       url: '/login',
-      btn: 'Anmelden'
+      btn: 'Anmelden',
+      statusText: 'Fehler bei der Registrierung. Bitte versuchen Sie es später noch einmal.'
     };
 
     this.helpConfig = this.type === 'login' ? login : register;
@@ -70,10 +74,17 @@ export class AuthFormComponent implements OnInit {
   }
 
   public getVerticalPosition(): number {
-    return this.type === 'login' ? 40 : 20;
+    if (this.isError()) {
+      return 25;
+    }
+    return this.type === 'login' ? 30 : 20;
   }
 
   public isLoading(): boolean {
     return this.store.selectSnapshot(ApplicationState.applicationState) === APPLICATION_STATE.PENDING;
+  }
+
+  public isError(): boolean {
+    return this.store.selectSnapshot(ApplicationState.applicationState) === APPLICATION_STATE.ERROR;
   }
 }

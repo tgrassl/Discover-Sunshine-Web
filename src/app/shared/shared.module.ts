@@ -18,6 +18,7 @@ import { ResultCardComponent } from './components/result-card/result-card.compon
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { AuthFormComponent } from './components/auth-form/auth-form.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { StatusNotificationComponent } from './components/status-notification/status-notification.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     ResultCardComponent,
     AuthFormComponent,
     LoadingSpinnerComponent,
+    StatusNotificationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
