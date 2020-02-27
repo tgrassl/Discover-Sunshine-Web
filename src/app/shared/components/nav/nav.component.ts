@@ -40,4 +40,8 @@ export class NavComponent {
   public toggleMobileNav(): void {
     this.isMenuOpen = !this.isMenuOpen;
   }
+
+  public canShowMapButton(): boolean {
+    return !this.router.url.includes('map');
+  }
 }

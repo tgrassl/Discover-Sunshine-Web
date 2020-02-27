@@ -4,7 +4,7 @@
     </div>
     <div class="hide-xs">
         <ul class="nav">
-            <li *ngIf="(isLoggedIn$ | async)" class="nav__item">
+            <li *ngIf="canShowMapButton()" class="nav__item">
                 <div class="nav-button" [routerLink]="['/map']">
                     <i class='uil uil-map nav-button__icon'></i>
                     <span class="nav-button__text">Karte</span>
