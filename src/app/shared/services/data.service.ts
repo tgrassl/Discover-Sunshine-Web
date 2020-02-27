@@ -28,6 +28,7 @@ export class DataService {
   }
 
   public getNotes(uid: string): Observable<Note[]> {
+    return this.http.get<any>('assets/test/notes.json');
     return this.http.get<Note[]>(this.getFullUrl('/notes?uid=' + uid));
   }
 
