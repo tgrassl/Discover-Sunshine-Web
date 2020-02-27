@@ -1,4 +1,4 @@
-<app-nav></app-nav>
-<div class="content">
+<app-nav *ngIf="canShowNav()"></app-nav>
+<div [class.content]="canShowNav()">
     <router-outlet></router-outlet>
 </div>

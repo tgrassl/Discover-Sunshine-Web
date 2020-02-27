@@ -10,6 +10,7 @@
 
     @include mobile() {
         margin-top: -20%;
+        margin-left: -10px;
     }
 
     &-display {

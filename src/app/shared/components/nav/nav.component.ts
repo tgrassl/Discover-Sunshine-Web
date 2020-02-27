@@ -1,3 +1,4 @@
+import { SetRedirectAction } from './../../state/auth/auth.actions';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
@@ -18,8 +19,13 @@ export class NavComponent {
 
   public handleAuthButtonClick() {
     const isLoggedIn = this.store.selectSnapshot(AuthState.isLoggedIn);
-    isLoggedIn ?
-      this.store.dispatch(new LogoutAction()) :
+    const currPath = this.router.routerState.snapshot.url;
+
+    if (isLoggedIn) {
+      this.store.dispatch(new LogoutAction())
+    } else {
+      this.store.dispatch(new SetRedirectAction(currPath));
       this.router.navigateByUrl('login');
+    }
   }
 }
