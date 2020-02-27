@@ -31,7 +31,11 @@ export class NavComponent {
     }
   }
 
-  public toggleMobileNav() {
+  public toggleMobileNav(): void {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  public canShowMapItem(): boolean {
+    return !this.router.routerState.snapshot.url.includes('map');
   }
 }

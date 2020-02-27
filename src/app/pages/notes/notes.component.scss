@@ -1,5 +1,19 @@
+@import "../../../styles/functions/functions";
+
 .notes {
     height: 90vh;
     width: 100%;
     background-color: var(--border);
+
+    @include mobile() {
+        height: auto;
+        width: 100%;
+    }
+}
+
+.button {
+    @include mobile() {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
 }

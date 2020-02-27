@@ -4,6 +4,13 @@
     </div>
     <div class="hide-xs">
         <ul class="nav">
+            <li *ngIf="(isLoggedIn$ | async) && canShowMapItem()" class="nav__item">
+                <div class="nav-button" [routerLink]="['/map']">
+                    <i class='uil uil-map nav-button__icon'></i>
+                    <span class="nav-button__text">Karte</span>
+                </div>
+            </li>
+
             <li *ngIf="isLoggedIn$ | async" class="nav__item">
                 <div class="nav-button hide-xs" [routerLink]="['/saved']">
                     <i class='uil uil-heart nav-button__icon'></i>
@@ -42,6 +49,13 @@
 
 <div class="show-xs">
     <ul class="mobile-menu" [class.mobile-menu--active]="isMenuOpen">
+        <li *ngIf="(isLoggedIn$ | async) && canShowMapItem()" class="mobile-menu__item" (click)="toggleMobileNav()">
+            <div class="nav-button" [routerLink]="['/map']">
+                <i class='uil uil-search nav-button__icon'></i>
+                <span class="nav-button__text">Suche</span>
+            </div>
+        </li>
+
         <li *ngIf="isLoggedIn$ | async" class="mobile-menu__item">
             <div class="nav-button hide-xs" [routerLink]="['/saved']" (click)="toggleMobileNav()">
                 <i class='uil uil-heart nav-button__icon'></i>

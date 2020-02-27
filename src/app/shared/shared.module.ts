@@ -19,6 +19,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { AuthFormComponent } from './components/auth-form/auth-form.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { StatusNotificationComponent } from './components/status-notification/status-notification.component';
+import { NoteCardComponent } from './components/note-card/note-card.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { StatusNotificationComponent } from './components/status-notification/st
     AuthFormComponent,
     LoadingSpinnerComponent,
     StatusNotificationComponent,
+    NoteCardComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -60,6 +62,7 @@ import { StatusNotificationComponent } from './components/status-notification/st
     AuthFormComponent,
     LoadingSpinnerComponent,
     StatusNotificationComponent,
+    NoteCardComponent,
   ]
 })
 export class SharedModule {

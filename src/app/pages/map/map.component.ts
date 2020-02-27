@@ -30,7 +30,8 @@ export class MapComponent implements OnDestroy {
   }
 
   public canShowLoadingCards(): boolean {
-    return this.store.selectSnapshot(ApplicationState.applicationState) === APPLICATION_STATE.INITIAL;
+    return this.store.selectSnapshot(ApplicationState.applicationState) === APPLICATION_STATE.INITIAL 
+    || !this.store.selectSnapshot(SearchState.searchData);
   }
 
   public canShowWarning(): boolean {

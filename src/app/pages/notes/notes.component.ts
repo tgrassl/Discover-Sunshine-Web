@@ -1,6 +1,7 @@
+import { GetNotesAction } from './../../shared/state/user/user.actions';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { Note } from 'src/app/shared/models/note.model';
 import { UserState } from 'src/app/shared/state/user/user.state';
 
@@ -12,9 +13,14 @@ import { UserState } from 'src/app/shared/state/user/user.state';
 export class NotesComponent implements OnInit {
 
   @Select(UserState.notes) notes$: Observable<Note[]>;
-  constructor() { }
+
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
+    this.store.dispatch(new GetNotesAction());
   }
 
+  public identify(index, item) {
+    return item.id;
+  }
 }
