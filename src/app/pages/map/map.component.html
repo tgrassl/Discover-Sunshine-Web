@@ -11,10 +11,19 @@
                         <app-result-card [listing]="listing" [isLoading]="isLoading()"></app-result-card>
                     </div>
                 </ng-container>
-  
+
                 <ng-container *ngIf="canShowLoadingCards()">
                     <div class="col-xs-12" *ngFor="let listing of [0,1,2]">
                         <app-result-card [listing]="null" [isLoading]="true"></app-result-card>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngIf="canShowWarning()">
+                    <div class="col-xs-12 center-xs">
+                        <app-status-notification
+                            text="Keine Ergebnisse verfügbar. Bitte ändere deine Eingaben und versuche es erneut."
+                            type="warning">
+                        </app-status-notification>
                     </div>
                 </ng-container>
             </div>

@@ -58,6 +58,8 @@ import { StatusNotificationComponent } from './components/status-notification/st
     InteractiveGoogleMapComponent,
     ResultCardComponent,
     AuthFormComponent,
+    LoadingSpinnerComponent,
+    StatusNotificationComponent,
   ]
 })
 export class SharedModule {
