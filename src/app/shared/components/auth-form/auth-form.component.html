@@ -1,0 +1,47 @@
+<div class="auth-form" [ngStyle]="{'transform': 'translateY(' + getVerticalPosition() + '%)'}">
+    <div class="row col-xs-12 center-xs">
+        <img class="auth-form__logo" src="assets/img/logo.png">
+    </div>
+    <form [formGroup]="this.authForm" (ngSubmit)="submitForm()">
+        <ng-container *ngIf="type === 'login'">
+            <div class="row col-xs-12 center-xs">
+                <input type="email" placeholder="E-Mail" [formControl]="this.authForm.get('login.email')">
+            </div>
+    
+            <div class="row col-xs-12 center-xs">
+                <input type="password" placeholder="Passwort" [formControl]="this.authForm.get('login.pwd')">
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="type === 'register'">
+            <div class="row col-xs-12 center-xs">
+                <input type="text" placeholder="Vorname" [formControl]="this.authForm.get('register.firstname')">
+            </div>
+
+            <div class="row col-xs-12 center-xs">
+                <input type="text" placeholder="Nachname" [formControl]="this.authForm.get('register.lastname')">
+            </div>
+
+            <div class="row col-xs-12 center-xs">
+                <input type="email" placeholder="E-Mail" [formControl]="this.authForm.get('register.email')">
+            </div>
+    
+            <div class="row col-xs-12 center-xs">
+                <input type="password" placeholder="Passwort" [formControl]="this.authForm.get('register.pwd')">
+            </div>
+        </ng-container>
+
+        <div class="row col-xs-12 center-xs">
+            <button class="button auth-form__submit" type="submit" [disabled]="isDisabled()" [class.button--loading]="isLoading()">
+                <app-loading-spinner [loading]="isLoading()"></app-loading-spinner>
+                <span>{{getSubmitButtonText()}}</span>
+            </button>
+        </div>
+    </form>
+
+    <div class="row col-xs-12 center-xs" *ngIf="helpConfig">
+        <p class="auth-form__help" >{{helpConfig.text}}
+            <a [routerLink]="helpConfig.url">{{helpConfig.btn}}</a>
+        </p>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+@import "../../../../styles/functions/functions";
+
+.auth-form {
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 8px;
+    max-width: 410px;
+    padding: 2rem;
+    padding-top: 1rem;
+    box-shadow: var(--shadow-alt);
+
+    @include mobile() {
+        height: 100vh;
+        width: 100%;
+        transform: none !important;
+    }
+
+    &__logo {
+        width: auto;
+        height: 110px;
+        margin-bottom: 1.5rem;
+    }
+
+    &__help {
+        margin-top: 1rem;
+        @include fontSize(14px);
+
+        a {
+            color: var(--primary);
+        }
+    }
+
+    &__submit {
+        width: 100%;
+        margin-top: 1rem;
+        padding: 1rem;
+    }
+
+    input {
+        background-color: var(--border);
+        border: 1.5px solid var(--border);
+        padding: 1rem;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+        transition: all .1s ease-in;
+
+        &:focus, &:hover {
+            border: 1.5px solid var(--text);
+        }
+
+        &.ng-invalid.ng-touched {
+            border: 1.5px solid var(--red-dark);
+            color: var(--red-dark);
+
+            &::placeholder {
+                color: var(--red-dark);
+            }
+
+            &:focus, &:hover {
+                border: 1.5px solid var(--red-dark);
+            }
+        }
+    }
+}
