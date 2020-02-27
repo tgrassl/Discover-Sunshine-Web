@@ -12,6 +12,11 @@ export class DeleteNoteAction {
   constructor(public noteId?: number) { }
 }
 
+export class UpdateNoteAction {
+  static readonly type = `${prefix} Update Note`;
+  constructor(public updatedNote: Note) { }
+}
+
 export class SetNotesAction {
   static readonly type = `${prefix} Set Notes`;
   constructor(public notes: Note[]) { }

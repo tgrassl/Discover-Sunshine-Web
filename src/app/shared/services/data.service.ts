@@ -36,6 +36,10 @@ export class DataService {
     return this.http.post<Note>(this.getFullUrl('/addNote'), note);
   }
 
+  public updateNote(note: Note): Observable<Note> {
+    return this.http.post<Note>(this.getFullUrl('/updateNote'), note);
+  }
+
   public deleteNote(noteId: number) {
     return this.http.delete(this.getFullUrl('/deleteNote?nid=' + noteId));
   }

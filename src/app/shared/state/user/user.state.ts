@@ -6,7 +6,7 @@ import { Note } from '../../models/note.model';
 import { DataService } from '../../services/data.service';
 import { ErrorStateTransitionAction, PendingStateTransitionAction, SuccessStateTransitionAction } from '../application/application.actions';
 import { AuthState } from './../auth/auth.state';
-import { GetNotesAction, SetNotesAction, AddNoteAction, DeleteNoteAction } from './user.actions';
+import { GetNotesAction, SetNotesAction, AddNoteAction, DeleteNoteAction, UpdateNoteAction } from './user.actions';
 
 export interface UserStateModel {
   notes: Note[];
@@ -42,6 +42,12 @@ export class UserState {
   deleteNote(ctx: StateContext<UserStateModel>, action: DeleteNoteAction): void {
     // ctx.patchState({ notes: action.newNote });
   }
+
+  @Action(UpdateNoteAction)
+  updateNote(ctx: StateContext<UserStateModel>, action: UpdateNoteAction): void {
+    // ctx.patchState({ notes: action.newNote });
+  }
+
 
   @Action(GetNotesAction)
   getNotes(ctx: StateContext<UserStateModel>, action: GetNotesAction): void {
