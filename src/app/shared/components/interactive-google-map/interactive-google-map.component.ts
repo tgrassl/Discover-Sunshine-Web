@@ -1,3 +1,4 @@
+import { isMobile } from './../../util';
 import {
   AfterViewInit,
   Component,
@@ -10,14 +11,15 @@ import {
   ViewChildren,
   ViewEncapsulation
 } from '@angular/core';
-import { GoogleMap, MapMarker } from '@angular/google-maps';
-import { Select } from '@ngxs/store';
+import { GoogleMap, MapMarker, MapInfoWindow } from '@angular/google-maps';
+import { Select, Store } from '@ngxs/store';
 import { LatLngLiteral } from 'ngx-google-places-autocomplete/objects/latLng';
 import { LatLngBounds } from 'ngx-google-places-autocomplete/objects/latLngBounds';
 import { Observable, Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { SearchState } from '../../state/search/search.state';
 import { Listing } from './../../models/listing.model';
+import { ToggleMobileMapAction } from '../../state/search/search.actions';
 
 @Component({
   selector: 'app-interactive-google-map',
@@ -33,23 +35,26 @@ export class InteractiveGoogleMapComponent implements OnInit, OnChanges, AfterVi
   public static DEFAULT_ZOOM = 2;
 
   @Select(SearchState.highlightedListing) highlightedListing$: Observable<Listing>;
-  @ViewChild('map') map: GoogleMap;
-  @ViewChildren('marker') marker: QueryList<MapMarker>;
   @Input() listings: Listing[] = [];
 
+  @ViewChild(MapInfoWindow, {static: false}) infoWindow: MapInfoWindow;
+  @ViewChild('map') map: GoogleMap;
+  @ViewChildren('marker') marker: QueryList<MapMarker>;
+
   public mapMarkers = [];
+  public infoListing: Listing;
   public markerOptions = { draggable: false, icon: InteractiveGoogleMapComponent.DEFAULT_MARKER_ICON };
   public bounds: LatLngBounds = new google.maps.LatLngBounds();
   public mapOptions: google.maps.MapOptions = {
     minZoom: 3,
-    maxZoom: 15,
+    maxZoom: 17,
     streetViewControl: false,
     mapTypeControl: false,
     fullscreenControl: false,
     gestureHandling: 'greedy',
     zoomControlOptions: {
       style: google.maps.ZoomControlStyle.SMALL,
-      position: google.maps.ControlPosition.TOP_LEFT
+      position: isMobile ? google.maps.ControlPosition.TOP_RIGHT : google.maps.ControlPosition.TOP_LEFT
     },
   };
 
@@ -57,9 +62,21 @@ export class InteractiveGoogleMapComponent implements OnInit, OnChanges, AfterVi
   private subs: Subscription[] = [];
   private listingMarker: MapMarker[] = [];
 
+  constructor(private store: Store) {}
+
   public ngOnInit(): void {
     this.setFallBackListings();
     this.handleMarkerHovering();
+  }
+
+  public ngAfterViewInit(): void {
+    this.checkAndFitBounds();
+
+    this.subs.push(this.marker.changes.subscribe(marker => {
+      if (marker) {
+        this.listingMarker = marker.toArray();
+      }
+    }));
   }
 
   public ngOnDestroy(): void {
@@ -96,29 +113,37 @@ export class InteractiveGoogleMapComponent implements OnInit, OnChanges, AfterVi
       .pipe(distinctUntilChanged())
       .subscribe((listing: Listing) => {
         if (listing) {
-          this.listingMarker.forEach((marker: MapMarker) => {
-            const markerPosition = marker.getPosition();
-            if (markerPosition.lat() === listing.latitude && markerPosition.lng() === listing.longitude) {
-              const mapsMarker = marker._marker;
-              const markerIndex = mapsMarker.getZIndex();
-              const newMarkerIndex = markerIndex ?
-                markerIndex + InteractiveGoogleMapComponent.HOVER_INDEX :
-                InteractiveGoogleMapComponent.HOVER_INDEX;
-
-              mapsMarker.setIcon(InteractiveGoogleMapComponent.HOVER_MARKER_ICON);
-              mapsMarker.setZIndex(newMarkerIndex);
-            }
-          });
+          this.setMarkerIcon(listing);
         } else {
-          this.listingMarker.map((marker: MapMarker) => {
-            if (marker.getIcon() === InteractiveGoogleMapComponent.HOVER_MARKER_ICON) {
-              const mapsMarker = marker._marker;
-              mapsMarker.setIcon(InteractiveGoogleMapComponent.DEFAULT_MARKER_ICON);
-              mapsMarker.setZIndex(mapsMarker.getZIndex() - InteractiveGoogleMapComponent.HOVER_INDEX);
-            }
-          });
+          this.resetMarkerIcons();
         }
       }));
+  }
+
+  private setMarkerIcon(listing: Listing): void {
+    this.listingMarker.forEach((marker: MapMarker) => {
+      const markerPosition = marker.getPosition();
+      if (markerPosition.lat() === listing.latitude && markerPosition.lng() === listing.longitude) {
+        const mapsMarker = marker._marker;
+        const markerIndex = mapsMarker.getZIndex();
+        const newMarkerIndex = markerIndex ?
+          markerIndex + InteractiveGoogleMapComponent.HOVER_INDEX :
+          InteractiveGoogleMapComponent.HOVER_INDEX;
+
+        mapsMarker.setIcon(InteractiveGoogleMapComponent.HOVER_MARKER_ICON);
+        mapsMarker.setZIndex(newMarkerIndex);
+      }
+    });
+  }
+
+  private resetMarkerIcons(): void {
+    this.listingMarker.map((marker: MapMarker) => {
+      if (marker.getIcon() === InteractiveGoogleMapComponent.HOVER_MARKER_ICON) {
+        const mapsMarker = marker._marker;
+        mapsMarker.setIcon(InteractiveGoogleMapComponent.DEFAULT_MARKER_ICON);
+        mapsMarker.setZIndex(mapsMarker.getZIndex() - InteractiveGoogleMapComponent.HOVER_INDEX);
+      }
+    });
   }
 
   private getListingPosition(listing: Listing): LatLngLiteral {
@@ -126,16 +151,6 @@ export class InteractiveGoogleMapComponent implements OnInit, OnChanges, AfterVi
       lat: listing.latitude,
       lng: listing.longitude
     };
-  }
-
-  public ngAfterViewInit(): void {
-    this.checkAndFitBounds();
-
-    this.subs.push(this.marker.changes.subscribe(marker => {
-      if (marker) {
-        this.listingMarker = marker.toArray();
-      }
-    }));
   }
 
   private setFallBackListings(): void {
@@ -153,5 +168,20 @@ export class InteractiveGoogleMapComponent implements OnInit, OnChanges, AfterVi
         this.map.fitBounds(this.bounds);
       }
     }
+  }
+
+  public openInfoWindow(marker: MapMarker | any) {
+    this.infoWindow.open(marker);
+    this.infoWindow.position = marker.position;
+    this.getMapListing(marker.id);
+  }
+
+  public getMapListing(id: number) {
+    const selectedListing = this.listings.find(item => item.idlisting === id);
+    this.infoListing = selectedListing;
+  }
+
+  public closeMap(): void {
+    this.store.dispatch(new ToggleMobileMapAction());
   }
 }

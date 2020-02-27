@@ -1,4 +1,16 @@
+<div class="map-close-mobile show-xs" (click)="closeMap()">
+    <i class='uil uil-angle-left'></i>
+    <span>Liste</span>
+</div>
 <google-map #map height="92.5vh" width="100%" [options]="mapOptions">
-    <map-marker #marker *ngFor="let marker of mapMarkers" [position]="marker.position"
-        [options]="marker.options"></map-marker>
+    <map-marker #marker *ngFor="let marker of mapMarkers" (mapClick)="openInfoWindow(marker)"
+        [position]="marker.position" [options]="marker.options">
+    </map-marker>
+
+    <map-info-window>
+        <ng-container *ngIf="infoListing">
+            <app-result-card [listing]="infoListing" [isInfoMode]="true"></app-result-card>
+        </ng-container>
+
+    </map-info-window>
 </google-map>

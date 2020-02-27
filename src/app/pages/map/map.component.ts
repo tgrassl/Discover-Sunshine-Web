@@ -1,9 +1,11 @@
+import { ToggleMobileMapAction } from './../../shared/state/search/search.actions';
 import { Component, OnDestroy } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
 import { Listing } from 'src/app/shared/models/listing.model';
 import { SearchState } from 'src/app/shared/state/search/search.state';
 import { ApplicationState, APPLICATION_STATE } from './../../shared/state/application/application.state';
+import { isMobile } from 'src/app/shared/util';
 
 @Component({
   selector: 'app-map',
@@ -37,5 +39,13 @@ export class MapComponent implements OnDestroy {
   public canShowWarning(): boolean {
     const listings = this.store.selectSnapshot(SearchState.listings);
     return listings && listings.length < 1;
+  }
+
+  public canShowMap(): boolean {
+    return isMobile ? this.store.selectSnapshot(SearchState.mobileMapActive) : true;
+  }
+
+  public openMobileMap(): void {
+    this.store.dispatch(new ToggleMobileMapAction());
   }
 }

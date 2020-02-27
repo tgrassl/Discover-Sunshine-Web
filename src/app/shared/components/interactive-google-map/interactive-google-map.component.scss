@@ -1,9 +1,67 @@
+@import "../../../../styles/functions/functions";
+
 .map-container {
     position: sticky !important;
     top: var(--nav-height) !important;
+
+    @include mobile() {
+        height: 100vh !important;
+        z-index: 90 !important;
+        position: fixed !important;
+    }
 }
 
-.gmnoprint:nth-child(1)  {
+.map-close-mobile {
+    position: fixed;
+    z-index: 95;
+    background: #ffffff;
+    color: var(--text);
+    top: calc(var(--nav-height) + 10px);
+    left: 20px;
+    border-radius: 8px;
+    padding-right: 0.8rem;
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+    transition: color .1s ease-in;
+
+    &:hover {
+        color: var(--text-hover);
+    }
+
+    i {
+        font-size: 1.5rem;
+        vertical-align: -2px;
+    }
+}
+
+.gm-style .gm-style-iw-t::after {
+    background: linear-gradient(45deg,rgba(255,255,255,1) 100%,rgba(255,255,255,0) 100%) !important;;
+}
+
+.gm-style-iw-d {
+    overflow: hidden !important;
+
+    @include small-mobile() {
+        min-width: 250px !important;
+    }
+}
+
+.gm-style-iw.gm-style-iw-c {
+    padding: 0 !important;
+
+    @include small-mobile() {
+        min-width: 250px !important;
+    }
+}
+
+button.gm-ui-hover-effect {
+    top: 0 !important;
+    right: 0 !important;
+    background: #fff !important;
+    border-radius: 0 8px 0 8px !important;
+}
+
+.gmnoprint:nth-child(1) {
     > div {
         border-radius: 8px !important;
         width: 30px !important;

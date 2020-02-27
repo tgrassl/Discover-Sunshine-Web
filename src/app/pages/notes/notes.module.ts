@@ -1,15 +1,14 @@
-import { NoteGuard } from './../../guards/note.guard';
-import { ReactiveFormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NotesComponent } from './notes.component';
-import { SharedModule } from 'src/app/shared/shared.module';
-import { NoteDetailsComponent } from './note-details/note-details.component';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
-
 import 'froala-editor/js/languages/de.js';
 import 'froala-editor/js/plugins/lists.min.js';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { NoteDetailsComponent } from './note-details/note-details.component';
+import { NotesComponent } from './notes.component';
+
 
 const routes: Routes = [
   { path: '', component: NotesComponent },

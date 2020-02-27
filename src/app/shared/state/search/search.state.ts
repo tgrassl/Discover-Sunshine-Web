@@ -1,30 +1,38 @@
-import { SearchData } from './../../models/searchData.model';
+import { Injectable } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { throwError } from 'rxjs/internal/observable/throwError';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
+import { Listing } from '../../models/listing.model';
 import { DataService } from '../../services/data.service';
 import { ErrorStateTransitionAction, PendingStateTransitionAction, SuccessStateTransitionAction } from '../application/application.actions';
-import { GetListingsAction, SetSearchDataAction, SetListingsAction, SetHighlightedListingAction } from './search.actions';
-import { Listing } from '../../models/listing.model';
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { SearchData } from './../../models/searchData.model';
+import {
+  GetListingsAction,
+  SetHighlightedListingAction,
+  SetListingsAction,
+  SetSearchDataAction,
+  ToggleMobileMapAction
+} from './search.actions';
 
 export interface SearchStateModel {
   searchData?: SearchData;
   listings?: Listing[];
   highlightedListing?: Listing;
+  mobileMapActive: boolean;
 }
 
 @State<SearchStateModel>({
   name: 'search',
   defaults: {
-    highlightedListing: null
+    highlightedListing: null,
+    mobileMapActive: false,
   }
 })
 @Injectable()
 export class SearchState {
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private activeRoute: ActivatedRoute) { }
 
   @Selector()
   static listings(state: SearchStateModel): Listing[] {
@@ -41,6 +49,11 @@ export class SearchState {
     return state.highlightedListing;
   }
 
+  @Selector()
+  static mobileMapActive(state: SearchStateModel): boolean {
+    return state.mobileMapActive;
+  }
+
   @Action(SetSearchDataAction)
   setSearchData(ctx: StateContext<SearchStateModel>, action: SetSearchDataAction): void {
     ctx.patchState({ searchData: action.searchData });
@@ -50,6 +63,19 @@ export class SearchState {
   @Action(SetHighlightedListingAction)
   setHighlightedListing(ctx: StateContext<SearchStateModel>, action: SetHighlightedListingAction): void {
     ctx.patchState({ highlightedListing: action.listing });
+  }
+
+  @Action(ToggleMobileMapAction)
+  toggleMobileMap(ctx: StateContext<SearchStateModel>): void {
+    const route: any = this.activeRoute;
+    const currPath: string = route._routerState.snapshot.url;
+
+    if (currPath.includes('map')) {
+      const currentState = ctx.getState().mobileMapActive;
+      ctx.patchState({ mobileMapActive: !currentState });
+    } else {
+      ctx.patchState({ mobileMapActive: false });
+    }
   }
 
   @Action(SetListingsAction)

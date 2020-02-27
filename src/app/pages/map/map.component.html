@@ -29,7 +29,11 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 hide-xs interactive-map">
+    <div class="col-xs-12 col-md-6 interactive-map" *ngIf="canShowMap()">
         <app-interactive-google-map [listings]="listings$ | async"></app-interactive-google-map>
     </div>
+</div>
+
+<div class="map-mobile-cta show-xs" (click)="openMobileMap()">
+    <i class='uil uil-map'></i>
 </div>

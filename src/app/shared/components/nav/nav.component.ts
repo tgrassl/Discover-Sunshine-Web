@@ -1,3 +1,4 @@
+import { ToggleMobileMapAction } from './../../state/search/search.actions';
 import { isMobile } from './../../util';
 import { SetRedirectAction } from './../../state/auth/auth.actions';
 import { Observable } from 'rxjs';

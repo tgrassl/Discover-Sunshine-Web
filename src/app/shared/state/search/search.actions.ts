@@ -7,6 +7,9 @@ export class GetListingsAction {
   static readonly type = `${prefix} Get Listings`;
 }
 
+export class ToggleMobileMapAction {
+  static readonly type = `${prefix} Toggle Mobile Map`;
+}
 
 export class SetHighlightedListingAction {
   static readonly type = `${prefix} Set Highlighted Listing`;

@@ -1,5 +1,10 @@
-<div class="result-card" (mouseenter)="setHiglighted(true)" (mouseleave)="setHiglighted(false)">
-    <div class="row">
+<div class="result-card"
+[title]="getTitle()"
+[routerLink]="getDetailLink()"
+(mouseenter)="setHiglighted(true)" 
+(mouseleave)="setHiglighted(false)" 
+[class.result-card--map]="isInfoMode">
+    <div class="row no-col-pad">
         <div class="col-md-5 col-xs-12">
             <img class="result-card__image" *ngIf="!isLoading" [src]="listing.imageUrl">
             <ngx-skeleton-loader *ngIf="isLoading" count="1"
@@ -40,13 +45,13 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-6 bottom-xs result-card-content__fav-container">
-                        <div class="result-card-content__fav-btn" *ngIf="!isLoading"
+                        <div class="result-card-content__fav-btn" *ngIf="!isLoading && !isInfoMode"
                         [ngClass]="{'result-card-content__fav-btn--active': isMarkedFavourite}"
                          (click)="markAsFavourite()">
                             <i class="material-icons">{{isMarkedFavourite ? 'favorite' : 'favorite_border'}}</i>
                         </div>
                     </div>
-                    <div class="col-xs-6 end-xs">
+                    <div class="col-xs-6 end-xs" [class.col-xs-12]="isInfoMode">
                         <ng-container *ngIf="!isLoading">
                             <div class="result-card-content__price">
                                 {{listing.price}} €

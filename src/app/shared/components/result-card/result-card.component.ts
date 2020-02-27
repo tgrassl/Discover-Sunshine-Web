@@ -12,7 +12,8 @@ import { isMobile } from './../../util';
 export class ResultCardComponent {
 
   @Input() listing: Listing;
-  @Input() isLoading: Listing;
+  @Input() isLoading: boolean;
+  @Input() isInfoMode: boolean;
 
   public isMarkedFavourite = false;
   
@@ -33,12 +34,20 @@ export class ResultCardComponent {
     return stars;
   }
 
-  public markAsFavourite() {
+  public markAsFavourite(): void {
     this.isMarkedFavourite = !this.isMarkedFavourite;
   }
 
-  public setHiglighted(isHiglighted: boolean) {
-    if(!isMobile) {
+  public getTitle(): string {
+    return this.listing ? this.listing.headline : '';
+  }
+
+  public getDetailLink(): string {
+    return this.listing ? '/listing/' + this.listing.idlisting : '';
+  }
+
+  public setHiglighted(isHiglighted: boolean): void {
+    if (!isMobile && !this.isInfoMode) {
       if (isHiglighted) {
         this.store.dispatch(new SetHighlightedListingAction(this.listing));
       } else {
