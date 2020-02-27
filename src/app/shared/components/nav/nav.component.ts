@@ -15,6 +15,8 @@ export class NavComponent {
 
   @Select(AuthState.isLoggedIn) isLoggedIn$: Observable<boolean>;
 
+  public isMenuOpen = false;
+
   constructor(private store: Store, private router: Router) { }
 
   public handleAuthButtonClick() {
@@ -27,5 +29,9 @@ export class NavComponent {
       this.store.dispatch(new SetRedirectAction(currPath));
       this.router.navigateByUrl('login');
     }
+  }
+
+  public toggleMobileNav() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }

@@ -41,6 +41,11 @@ button[disabled], .button--loading {
     display:inline-block;
     cursor: pointer;
     transition: all .1s ease-in;
+    -webkit-tap-highlight-color: transparent;
+
+    &:focus {
+        outline: none;
+    }
 
     &__text {
         font-weight: bold;
