@@ -1,7 +1,7 @@
 <input hidden [readonly]="true" [formControl]="parentControl">
 
 <div class="number-select-display" [satPopoverAnchor]='popover' (click)="popover.toggle()">
-    {{getText('Gast', 'Gäste', parentControl.value)}}
+    {{getText('Gast', 'Gäste', parentControl.value.total)}}
 </div>
 
 <sat-popover #popover

@@ -37,9 +37,9 @@ export class SearchBarComponent implements OnInit {
         lng: new FormControl('', [Validators.required])
       }),
       date: new FormControl({}, [Validators.required]),
-      guests: new FormControl(1, [Validators.required, 
-        Validators.max(SearchBarComponent.MAX_GUESTS), 
-        Validators.min(SearchBarComponent.MIN_GUESTS)])
+      guests: new FormControl({total: 1, adult: 1, kid: 0}, [Validators.required,
+      Validators.max(SearchBarComponent.MAX_GUESTS),
+      Validators.min(SearchBarComponent.MIN_GUESTS)])
     });
 
     const previousSearch = this.store.selectSnapshot(SearchState.searchData);
@@ -50,10 +50,10 @@ export class SearchBarComponent implements OnInit {
     if (this.mapMode) {
       this.searchForm.markAllAsTouched();
       this.searchForm.valueChanges
-      .pipe(debounceTime(SearchBarComponent.KEY_DEBOUNCE))
-      .subscribe(() => {
-        this.submitForm();
-      });
+        .pipe(debounceTime(SearchBarComponent.KEY_DEBOUNCE))
+        .subscribe(() => {
+          this.submitForm();
+        });
     }
   }
 
@@ -62,7 +62,6 @@ export class SearchBarComponent implements OnInit {
       this.store.dispatch(new SetSearchDataAction(this.searchForm.value as SearchData));
       this.router.navigateByUrl('map');
     }
-
   }
 
   public getGuestClass(): string {
@@ -89,12 +88,12 @@ export class SearchBarComponent implements OnInit {
   public getGuestConfig(): NumberSelectConfig {
     return {
       rows: [
-        {single: 'Erwachsener', multiple: 'Erwachsene'},
-        {single: 'Kind', multiple: 'Kinder'}
+        { single: 'Erwachsener', multiple: 'Erwachsene' },
+        { single: 'Kind', multiple: 'Kinder' }
       ],
       max: SearchBarComponent.MAX_GUESTS,
       min: SearchBarComponent.MIN_GUESTS,
-      default: 1
+      default: {total: 1, adult: 1, kid: 0}
     };
   }
 
