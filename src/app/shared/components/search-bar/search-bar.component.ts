@@ -67,7 +67,9 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   public submitForm(): void {
     if (this.searchForm.valid) {
       this.store.dispatch(new SetSearchDataAction(this.searchForm.value as SearchData));
-      this.router.navigateByUrl('map');
+      if (!this.mapMode) {
+        this.router.navigateByUrl('map');
+      }
     }
   }
 
