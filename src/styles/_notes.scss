@@ -7,4 +7,19 @@
         height: auto;
         width: 100%;
     }
+
+    &__not-found {
+        min-height: 300px;
+        display: flex;
+        font-size: 18px;
+
+        @include mobile() {
+            font-size: 1rem;
+        }
+
+        i {
+            font-size: 1.6rem;
+            margin-right: 5px;
+        }
+    }
 }

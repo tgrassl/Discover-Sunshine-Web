@@ -6,6 +6,6 @@
         <div class="note-card__title">{{note.title}}</div>
     </div>
     <div class="row col-xs-12">
-        <div class="note-card__content">{{getPreviewText()}}</div>
+        <div class="note-card__content" [innerHTML]="getPreviewText()"></div>
     </div>
 </div>

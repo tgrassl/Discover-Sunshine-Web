@@ -8,7 +8,6 @@
     transition: all .2s ease-in;
     cursor: pointer;
     margin-right: 1rem;
-    margin-bottom: 1rem;
     height: 100%;
     max-height: 290px;
 
@@ -24,10 +23,8 @@
 
     &__content {
         max-height: 158px;
-
-        &::after {
-            content: "...";
-        }
+        word-wrap: break-word;
+        width: 100%;
 
         @include mobile() {
            overflow: hidden;

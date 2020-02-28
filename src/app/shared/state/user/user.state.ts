@@ -16,7 +16,7 @@ export interface UserStateModel {
 @State<UserStateModel>({
   name: 'user',
   defaults: {
-    notes: null
+    notes: []
   }
 })
 @Injectable()
@@ -38,9 +38,12 @@ export class UserState {
   setNotes(ctx: StateContext<UserStateModel>, action: SetNotesAction): void {
     const notes = action.notes;
     const sortedNotes = notes.slice().sort((a, b) => {
-      const c = new Date(a.created);
-      const d = new Date(b.created);
-      return +d - +c;
+      if (a && b) {
+        const c = new Date(a.created);
+        const d = new Date(b.created);
+        return +d - +c;
+      }
+      return 1;
     });
     ctx.patchState({ notes: sortedNotes });
   }
@@ -55,10 +58,6 @@ export class UserState {
         return throwError(err);
       }))
       .subscribe((data: any) => {
-        const responseNote: Note = JSON.parse(data);
-        const notes = ctx.getState().notes;
-        const newNotes = [...notes, responseNote];
-        ctx.dispatch(new SetNotesAction(newNotes));
         ctx.dispatch(new SuccessStateTransitionAction());
       });
   }
@@ -111,7 +110,7 @@ export class UserState {
     if (action.uid) {
       uid = action.uid;
     } else {
-      const user = await this.store.selectOnce(AuthState.user).toPromise();
+      const user = this.store.selectSnapshot(AuthState.user);
       uid = user.id;
     }
 

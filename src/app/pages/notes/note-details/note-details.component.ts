@@ -1,3 +1,4 @@
+import { AuthState } from './../../../shared/state/auth/auth.state';
 import { environment } from 'src/environments/environment';
 import { ApplicationState, APPLICATION_STATE } from './../../../shared/state/application/application.state';
 import { Location } from '@angular/common';
@@ -76,6 +77,7 @@ export class NoteDetailsComponent implements OnInit {
         created: new Date(),
         content: formValues.content,
         title: formValues.title,
+        user: this.store.selectSnapshot(AuthState.user)
       };
 
       if (this.detailView) {
