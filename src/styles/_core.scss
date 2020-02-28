@@ -139,4 +139,15 @@ input {
     .container__days {
         margin-bottom: 10px !important;
     }
+
+    &-open {
+        .content {
+            padding-top: 0 !important;
+        }
+
+        .navbar {
+            position: relative !important;
+            z-index: 0 !important;
+        }
+    }
 }
