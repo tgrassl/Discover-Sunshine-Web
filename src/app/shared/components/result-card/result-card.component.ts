@@ -34,7 +34,8 @@ export class ResultCardComponent {
     return stars;
   }
 
-  public markAsFavourite(): void {
+  public markAsFavourite(event): void {
+    event.stopPropagation();
     this.isMarkedFavourite = !this.isMarkedFavourite;
   }
 
@@ -43,7 +44,7 @@ export class ResultCardComponent {
   }
 
   public getDetailLink(): string {
-    return this.listing ? '/listing/' + this.listing.idlisting : '';
+    return this.listing ? '/listing/' + this.listing.id : '';
   }
 
   public setHiglighted(isHiglighted: boolean): void {

@@ -5,7 +5,7 @@ import { PricePeriod } from './priceperiod.model';
 import { PropertyType } from './propertyType.model';
 
 export interface Listing {
-    idlisting: number;
+    id: number;
     sleeps: number;
     bedrooms: number;
     bathrooms: number;

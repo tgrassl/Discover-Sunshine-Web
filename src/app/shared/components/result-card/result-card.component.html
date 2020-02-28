@@ -47,7 +47,7 @@
                     <div class="col-xs-6 bottom-xs result-card-content__fav-container">
                         <div class="result-card-content__fav-btn" *ngIf="!isLoading && !isInfoMode"
                         [ngClass]="{'result-card-content__fav-btn--active': isMarkedFavourite}"
-                         (click)="markAsFavourite()">
+                         (click)="markAsFavourite($event)">
                             <i class="material-icons">{{isMarkedFavourite ? 'favorite' : 'favorite_border'}}</i>
                         </div>
                     </div>

@@ -88,11 +88,14 @@ export class InteractiveGoogleMapComponent implements OnInit, OnChanges, AfterVi
   }
 
   private handleListingChange(): void {
+    this.mapMarkers = [];
+    this.infoListing = null;
+    
     if (this.listings) {
       this.listings.forEach(listing => {
         const listingPosition: LatLngLiteral = this.getListingPosition(listing);
         this.mapMarkers.push({
-          id: listing.idlisting,
+          id: listing.id,
           position: listingPosition,
           options: {
             ...this.markerOptions,
@@ -177,7 +180,7 @@ export class InteractiveGoogleMapComponent implements OnInit, OnChanges, AfterVi
   }
 
   public getMapListing(id: number) {
-    const selectedListing = this.listings.find(item => item.idlisting === id);
+    const selectedListing = this.listings.find(item => item.id === id);
     this.infoListing = selectedListing;
   }
 
