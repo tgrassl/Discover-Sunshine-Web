@@ -54,9 +54,10 @@ export class UserState {
         ctx.dispatch(new ErrorStateTransitionAction());
         return throwError(err);
       }))
-      .subscribe((data: Note) => {
+      .subscribe((data: any) => {
+        const responseNote: Note = JSON.parse(data);
         const notes = ctx.getState().notes;
-        const newNotes = [...notes, data];
+        const newNotes = [...notes, responseNote];
         ctx.dispatch(new SetNotesAction(newNotes));
         ctx.dispatch(new SuccessStateTransitionAction());
       });
@@ -104,13 +105,14 @@ export class UserState {
   }
 
   @Action(GetNotesAction)
-  getNotes(ctx: StateContext<UserStateModel>, action: GetNotesAction): void {
+  async getNotes(ctx: StateContext<UserStateModel>, action: GetNotesAction) {
     ctx.dispatch(new PendingStateTransitionAction());
     let uid = null;
     if (action.uid) {
       uid = action.uid;
     } else {
-      uid = this.store.selectSnapshot(AuthState.user).id;
+      const user = await this.store.selectOnce(AuthState.user).toPromise();
+      uid = user.id;
     }
 
     if (uid) {

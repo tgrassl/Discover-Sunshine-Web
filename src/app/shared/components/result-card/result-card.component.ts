@@ -47,7 +47,7 @@ export class ResultCardComponent {
   }
 
   public setHiglighted(isHiglighted: boolean): void {
-    if (!isMobile && !this.isInfoMode) {
+    if (!isMobile && !this.isInfoMode && !this.isLoading) {
       if (isHiglighted) {
         this.store.dispatch(new SetHighlightedListingAction(this.listing));
       } else {

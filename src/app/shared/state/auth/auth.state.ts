@@ -96,6 +96,7 @@ export class AuthState implements NgxsOnInit {
         return throwError(err);
       }))
       .subscribe(async (data) => {
+        data = JSON.parse(data);
         const result = await bcrypt.compare(action.pwd, data.pwd);
         if (result) {
           await ctx.dispatch(new GetUserAction(data.id));
@@ -122,8 +123,9 @@ export class AuthState implements NgxsOnInit {
         ctx.dispatch(new ErrorStateTransitionAction());
         return throwError(err);
       }))
-      .subscribe(async (data) => {
-        await ctx.dispatch(new SetUserAction(data));
+      .subscribe(async (data: any) => {
+        const userResponse: User = JSON.parse(data);
+        await ctx.dispatch(new SetUserAction(userResponse));
         const user = ctx.getState().user;
         if (user) {
           ctx.patchState({ isLoggedIn: true });

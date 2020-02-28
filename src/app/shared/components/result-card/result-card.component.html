@@ -22,7 +22,7 @@
                 <div class="row col-xs-12">
                     <h3 class="result-card-content__title" *ngIf="!isLoading">{{listing.headline}}</h3>
                     <ngx-skeleton-loader *ngIf="isLoading" count="1" 
-                    [theme]="{'width': '200px','height': '50%', 'margin-top': '1rem', 'margin-bottom': '3rem'}"> </ngx-skeleton-loader>
+                    [theme]="{'width': '200px','height': '50%', 'margin-top': '1rem', 'margin-bottom': '1.5rem'}"> </ngx-skeleton-loader>
                 </div>
                 <div class="row col-xs-12">
                     <ul class="result-card-content__amenities" *ngIf="!isLoading">

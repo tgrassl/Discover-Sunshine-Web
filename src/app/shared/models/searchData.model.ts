@@ -1,8 +1,20 @@
+import { Moment } from 'moment';
+
 export interface SearchData {
     destination: SearchDataDestination;
-    start: Date;
-    end: Date;
-    guests: number;
+    date: SearchDataDate;
+    guests: SearchDataGuests;
+}
+
+export interface SearchDataDate {
+    start: Moment;
+    end: Moment;
+}
+
+export interface SearchDataGuests {
+    total: number;
+    adult: number;
+    kid: number;
 }
 
 export interface SearchDataDestination {
