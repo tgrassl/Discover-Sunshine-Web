@@ -52,7 +52,7 @@ export class NumberSelectComponent implements OnInit {
     this.selectValues[Object.keys(this.selectValues)[0]] = this.parentControl.value.adult;
     this.selectValues[Object.keys(this.selectValues)[1]] = this.parentControl.value.kid;
     const total = this.parentControl.value.kid + this.parentControl.value.adult;
-    this.parentControl.patchValue({...this.parentControl.value, total});
+    this.parentControl.patchValue({ ...this.parentControl.value, total });
   }
 
   public increase(id: string): void {
@@ -75,16 +75,18 @@ export class NumberSelectComponent implements OnInit {
   public setNewValue(add: boolean, currVal: any, id: string, selectVal: any): void {
     const newVal = add ? currVal + 1 : currVal - 1;
     const index = Object.keys(this.selectValues).indexOf(id);
-    const newSelectVal = (add ? selectVal + 1 :  selectVal - 1);
+    const newSelectVal = (add ? selectVal + 1 : selectVal - 1);
 
-    if (index === 0) {
-      this.parentControl.patchValue({...this.parentControl.value, adult: newSelectVal});
-    } else {
-      this.parentControl.patchValue({...this.parentControl.value, kid: newSelectVal});
+    if (newSelectVal >= 0) {
+      if (index === 0) {
+        this.parentControl.patchValue({ ...this.parentControl.value, adult: newSelectVal });
+      } else {
+        this.parentControl.patchValue({ ...this.parentControl.value, kid: newSelectVal });
+      }
+
+      this.parentControl.patchValue({ ...this.parentControl.value, total: newVal });
+      this.selectValues[id] = newSelectVal;
     }
-
-    this.parentControl.patchValue({...this.parentControl.value, total: newVal});
-    this.selectValues[id] = newSelectVal;
   }
 
   public getText(single: string, multiple: string, val: number): string {
