@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { ApplicationState, APPLICATION_STATE } from './../../../shared/state/application/application.state';
 import { Location } from '@angular/common';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
@@ -20,32 +21,15 @@ export class NoteDetailsComponent implements OnInit {
   public detailView = false;
   public currentNote: Note;
   public editorOptions: any = {
-    placeholderText: 'Trage hier deine Notizen ein.',
-    heightMin: 300,
-    language: 'de',
-    listAdvancedTypes: true,
-    toolbarButtons: {
-      moreText: {
-        buttons: ['bold', 'italic', 'underline', 'formatUL', 'formatOL'],
-        buttonsVisible: 5
-      },
-      moreMisc: {
-        buttons: ['undo', 'redo'],
-        align: 'right',
-        buttonsVisible: 2
-      }
-    },
-    toolbarButtonsXS: {
-      moreText: {
-        buttons: ['bold', 'italic', 'underline', 'formatUL', 'formatOL'],
-        buttonsVisible: 2
-      },
-      moreMisc: {
-        buttons: ['undo', 'redo'],
-        align: 'right',
-        buttonsVisible: 2
-      }
-    }
+    toolbar: 'bold italic underline code undo redo',
+    plugins: 'lists',
+    width: '100%',
+    body_class: 'note-editor',
+    branding: false,
+    menubar: false,
+    block_formats: null,
+    contextmenu: null,
+    resize: false
   };
 
   constructor(
@@ -120,5 +104,9 @@ export class NoteDetailsComponent implements OnInit {
 
   public isError(): boolean {
     return this.store.selectSnapshot(ApplicationState.applicationState) === APPLICATION_STATE.ERROR;
+  }
+
+  public getTinyApiKey() {
+    return environment.tinyApiKey;
   }
 }

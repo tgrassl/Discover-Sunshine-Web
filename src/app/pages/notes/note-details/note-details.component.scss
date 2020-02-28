@@ -52,33 +52,27 @@
     }
 }
 
-.fr-box {
-    width: 100% !important;
-    box-shadow: var(--shadow) !important;
-    width: 100% !important;
+editor {
+    width: 100%;
+}
+
+.tox.tox-tinymce {
     box-shadow: var(--shadow) !important;
     border-radius: 8px !important;
-    overflow: hidden !important;
+    border: none !important;
+    height: 300px !important;
+    //width: 100vw !important;
+}
 
-    > div {
-        border-right: none !important;
-        border-left: none !important;
-    }
+.tox .tox-statusbar {
+    display: none !important;
+}
 
-    .fr-toolbar.fr-top {
-        border: none;
-        padding-top: 5px;
-    }
+.tox .tox-toolbar, .tox .tox-toolbar__overflow, .tox .tox-toolbar__primary {
+    background: none !important;
+    background-color: var(--border) !important;
+}
 
-    p {
-        font-size: 1rem !important;
-    }
-
-    .second-toolbar {
-        border: none;
-
-        a {
-            display: none;
-        }
-    }
+.tox .tox-edit-area__iframe {
+    position: relative !important;
 }

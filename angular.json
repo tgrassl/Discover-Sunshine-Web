@@ -30,9 +30,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/fonts/font.css",
-              "./node_modules/froala-editor/css/froala_editor.pkgd.min.css",
-              "./node_modules/froala-editor/css/froala_style.min.css"
+              "src/assets/fonts/font.css"
             ],
             "scripts": []
           },
