@@ -26,6 +26,17 @@
                         </app-status-notification>
                     </div>
                 </ng-container>
+
+                <ng-container *ngIf="canShowError()">
+                    <div class="col-xs-12 center-xs">
+                        <app-status-notification
+                            text="Fehler bei der Übertragung. Bitte versuche es später erneut."
+                            type="error">
+                        </app-status-notification>
+                    </div>
+                </ng-container>
+
+                
             </div>
         </div>
     </div>
