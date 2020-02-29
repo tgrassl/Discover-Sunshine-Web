@@ -75,7 +75,7 @@ export class AuthFormComponent implements OnInit {
 
   public getVerticalPosition(): number {
     if (this.isError()) {
-      return 25;
+      return this.type === 'login' ? 25 : 20;
     }
     return this.type === 'login' ? 30 : 20;
   }

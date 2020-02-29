@@ -45,6 +45,6 @@
     </div>
 </div>
 
-<div class="map-mobile-cta show-xs" (click)="openMobileMap()">
+<div class="map-mobile-cta show-xs" (click)="openMobileMap()" *ngIf="listings$ | async">
     <i class='uil uil-map'></i>
 </div>

@@ -1,0 +1,43 @@
+<div class="result-details-cost">
+    <div class="row col-xs-12 bottom-xs m-b-10 result-details-cost-row result-details-cost-row--top">
+        <div class="result-details-cost__amount">
+            {{listing.price}} €
+        </div>
+        <div class="result-details-cost__period">
+            pro {{listing.pricePeriod.period}}
+        </div>
+    </div>
+
+    <div class="row col-xs-12 result-details-cost-row">
+        <div class="result-details-cost__start">
+            <i class='uil uil-plane-fly'></i>
+            <span>{{getFormattedDate(searchData.date.start)}}</span>
+        </div>
+        <div class="result-details-cost__end">
+            <i class='uil uil-plane-arrival'></i>
+            <span>{{getFormattedDate(searchData.date.end)}}</span>
+        </div>
+        <div class="result-details-cost__guests">
+            <i class='uil uil-users-alt'></i>
+            <span>{{searchData.guests.total}}</span>
+        </div>
+    </div>
+
+    <div class="row col-xs-12 bottom-xs result-details-cost-row">
+        <div class="result-details-cost__summary">
+            <div class="result-details-cost__total">
+                Gesamt:
+            </div>
+            <div class="result-details-cost__total-amount">
+                {{getTotalPrice()}} €
+            </div>
+        </div>
+    </div>
+
+    <div class="row col-xs-12 result-details-cost-row">
+        <a class="button result-details-cost__button" rel="noopener noreferrer" target="_blank" [href]="listing.detailPageUrl">
+            <i class='uil uil-arrow-right'></i>
+            <span>Zum Anbieter</span>
+        </a>
+    </div>
+</div>

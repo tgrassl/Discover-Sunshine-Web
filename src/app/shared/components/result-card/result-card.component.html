@@ -1,6 +1,7 @@
 <div class="result-card"
 [title]="getTitle()"
-[routerLink]="getDetailLink()"
+[satPopoverAnchor]='details'
+(click)="toggleDetails(details)"
 (mouseenter)="setHiglighted(true)" 
 (mouseleave)="setHiglighted(false)" 
 [class.result-card--map]="isInfoMode">
@@ -14,7 +15,7 @@
             <div class="result-card-content">
                 <div class="row col-xs-12">
                     <div class="result-card-content__rating" *ngIf="!isLoading">
-                        <i class="material-icons" *ngFor="let rating of getRating()">{{rating}}</i>
+                        <i class="material-icons" *ngFor="let rating of getListingRating()">{{rating}}</i>
                     </div>
                     <ngx-skeleton-loader *ngIf="isLoading" count="1" 
                     [theme]="{'width': '140px','height': '80%'}"> </ngx-skeleton-loader>
@@ -69,3 +70,14 @@
         </div>
     </div>
 </div>
+
+<sat-popover #details
+ [hasBackdrop]="true"
+ backdropClass="result-details-backdrop"
+ verticalAlign="center"
+ horizontalAlign="center"
+ [autoFocus]="false">
+    <ng-container *ngIf="listing">
+        <app-result-details [listing]="listing" [targetRef]="details"></app-result-details>
+    </ng-container>
+</sat-popover>

@@ -7,6 +7,9 @@ $flexboxgrid-outer-margin: 0 !default;
 $flexboxgrid-breakpoints: sm 512px 512px, md 768px 768px, lg 1024px 1024px;
 
 .no-col-pad {
+    padding-left: 0;
+    padding-right: 0;
+
     [class^="col-"] {
         padding-left: 0;
         padding-right: 0;
@@ -48,7 +51,7 @@ $flexboxgrid-breakpoints: sm 512px 512px, md 768px 768px, lg 1024px 1024px;
     .hide-sm {
         display: none;
     }
-    
+
     .show-xs {
         display: none;
     }

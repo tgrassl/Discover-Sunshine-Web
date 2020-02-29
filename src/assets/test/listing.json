@@ -26,10 +26,36 @@
     },
     "amenities": [
       {
+        "id": 1,
         "name": "TV"
       },
       {
+        "id": 2,
         "name": "Pool"
+      },
+      {
+        "id": 3,
+        "name": "Internet"
+      },
+      {
+        "id": 4,
+        "name": "Klimaanlage"
+      },
+      {
+        "id": 5,
+        "name": "Heizung"
+      },
+      {
+        "id": 6,
+        "name": "Parkplatz"
+      },
+      {
+        "id": 7,
+        "name": "Waschmaschine & Trockner"
+      },
+      {
+        "id": 8,
+        "name": "Nichtraucher"
       }
     ],
     "availability": {
@@ -64,10 +90,20 @@
     },
     "amenities": [
       {
+        "id": 1,
         "name": "TV"
       },
       {
+        "id": 2,
         "name": "Pool"
+      },
+      {
+        "id": 8,
+        "name": "Nichtraucher"
+      },
+      {
+        "id": 6,
+        "name": "Parkplatz"
       }
     ],
     "availability": {
@@ -102,10 +138,16 @@
     },
     "amenities": [
       {
+        "id": 1,
         "name": "TV"
       },
       {
+        "id": 2,
         "name": "Pool"
+      },
+      {
+        "id": 6,
+        "name": "Parkplatz"
       }
     ],
     "availability": {
@@ -138,14 +180,7 @@
     "PremiumBadge": {
       "name": "Premium Partner"
     },
-    "amenities": [
-      {
-        "name": "TV"
-      },
-      {
-        "name": "Pool"
-      }
-    ],
+    "amenities": [],
     "availability": {
       "start": "2020-01-07T09:43:03.153Z",
       "end": "2020-05-07T09:43:03.153Z"
@@ -176,14 +211,7 @@
     "PremiumBadge": {
       "name": "Premium Partner"
     },
-    "amenities": [
-      {
-        "name": "TV"
-      },
-      {
-        "name": "Pool"
-      }
-    ],
+    "amenities": [],
     "availability": {
       "start": "2020-01-07T09:43:03.153Z",
       "end": "2020-05-07T09:43:03.153Z"
@@ -216,9 +244,11 @@
     },
     "amenities": [
       {
+        "id": 1,
         "name": "TV"
       },
       {
+        "id": 2,
         "name": "Pool"
       }
     ],
@@ -254,9 +284,11 @@
     },
     "amenities": [
       {
+        "id": 1,
         "name": "TV"
       },
       {
+        "id": 2,
         "name": "Pool"
       }
     ],
@@ -330,9 +362,11 @@
     },
     "amenities": [
       {
+        "id": 1,
         "name": "TV"
       },
       {
+        "id": 2,
         "name": "Pool"
       }
     ],
@@ -368,9 +402,11 @@
     },
     "amenities": [
       {
+        "id": 1,
         "name": "TV"
       },
       {
+        "id": 2,
         "name": "Pool"
       }
     ],

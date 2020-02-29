@@ -2,7 +2,8 @@ import { Component, Input } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Listing } from './../../models/listing.model';
 import { SetHighlightedListingAction } from './../../state/search/search.actions';
-import { isMobile } from './../../util';
+import { isMobile, getRating } from './../../util';
+import { SatPopover } from '@ncstate/sat-popover';
 
 @Component({
   selector: 'app-result-card',
@@ -16,27 +17,16 @@ export class ResultCardComponent {
   @Input() isInfoMode: boolean;
 
   public isMarkedFavourite = false;
-  
+
   constructor(private store: Store) { }
-
-  public getRating(): string[] {
-    const stars = [];
-    const starsFull = Math.floor(this.listing.averageRating);
-    const starsRemaining = this.listing.averageRating - starsFull;
-    for (let i = 0; i < starsFull; i++) {
-      stars.push('star');
-    }
-
-    if (starsRemaining >= 0.5) {
-      stars.push('star_half');
-    }
-
-    return stars;
-  }
 
   public markAsFavourite(event): void {
     event.stopPropagation();
     this.isMarkedFavourite = !this.isMarkedFavourite;
+  }
+
+  public getListingRating(): any {
+    return getRating(this.listing);
   }
 
   public getTitle(): string {
@@ -54,6 +44,12 @@ export class ResultCardComponent {
       } else {
         this.store.dispatch(new SetHighlightedListingAction(null));
       }
+    }
+  }
+
+  public toggleDetails(popover: SatPopover): void {
+    if (this.listing) {
+      popover.toggle();
     }
   }
 }

@@ -1,0 +1,60 @@
+<div class="result-details-modal">
+    <div class="result-details" *ngIf="listing">
+        <div class="result-details__close" (click)="targetRef.toggle()">
+            <i class="uil uil-times"></i>
+        </div>
+        <div class="result-details__content">
+            <div class="row no-col-pad">
+                <div class="col-md-9 col-xs-12">
+                    <div class="row col-xs-12 no-col-pad">
+                        <img class="result-details__image" [src]="listing.imageUrl">
+                    </div>
+                    <div class="row col-xs-12 result-details-row m-t-10">
+                        <div class="result-details__rating">
+                            <i class="material-icons" *ngFor="let rating of listingRating">{{rating}}</i>
+                        </div>
+                        <h2>{{listing.headline}}</h2>
+                        <div class="show-xs">
+                            <app-result-details-cost [listing]="listing" [searchData]="searchData"></app-result-details-cost>
+                        </div>
+    
+                        <ul class="result-details__overview">
+                            <li>
+                                <i class="uil uil-home-alt"></i>
+                                <span>{{listing.spaceArea}} m<sup>2</sup></span>
+                            </li>
+                            <li>
+                                <i class="uil uil-users-alt"></i>
+                                <span>Max. Gäste: {{listing.sleeps}}</span>
+                            </li>
+                            <li>
+                                <i class="uil uil-bed"></i>
+                                <span>{{listing.bedrooms}} Schlafzimmer</span>
+                            </li>
+                            <li>
+                                <i class="uil uil-bath"></i>
+                                <span>{{listing.bathrooms}} Badezimmer</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="row col-xs-12 result-details-row" *ngIf="listing.summary">
+                        <h3>Beschreibung</h3>
+                        <p class="result-details__description" [innerHTML]="listing.summary"></p>
+                    </div>
+                    <div class="row col-xs-12 result-details-row" *ngIf="listing.amenities">
+                        <h3>Vorzüge</h3>
+                        <ul class="result-details__amenities">
+                            <li *ngFor="let amenity of listing.amenities">
+                                <i class="uil" [ngClass]="getAmenityIcon(amenity)"></i>
+                                <span>{{amenity.name}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 hide-xs">
+                    <app-result-details-cost [listing]="listing" [searchData]="searchData"></app-result-details-cost>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

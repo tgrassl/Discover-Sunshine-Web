@@ -1,0 +1,85 @@
+@import "../../../../../styles/functions/functions";
+
+.result-details-cost {
+    padding: 1rem;
+    border-left: 2px solid var(--border);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 25%;
+
+    @include mobile() {
+        position: relative;
+        border: none;
+        padding: 0;
+        bottom: 0;
+        z-index: 200;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    &-row {
+        @include mobile() {
+            padding: 0;
+        }
+
+        &--top {
+            margin-top: 2rem;
+
+            @include mobile() {
+                margin-top: 1rem;
+            }
+        }
+    }
+
+    &__guests,
+    &__start,
+    &__end {
+        width: 100%;
+        font-weight: bold;
+
+        i {
+            font-size: 1.5rem;
+            vertical-align: -2px;
+            margin-right: 5px;
+        }
+    }
+
+    &__amount {
+        font-weight: bold;
+        line-height: 1.2;
+        font-size: 2rem;
+        margin-right: 0.5rem;
+
+        @include mobile() {
+            font-size: 1.8rem;
+        }
+    }
+
+    &__total {
+        flex: 1;
+    }
+
+    &__summary {
+        display: flex;
+        width: 100%;
+        font-weight: bold;
+        margin: 1rem 0;
+    }
+
+    &__period {
+        font-size: 1rem;
+    }
+
+    &__button {
+        width: 100%;
+        i {
+            font-size: 1.5rem;
+            vertical-align: -2px;
+
+            &::before {
+                margin-left: -0.5rem;
+            }
+        }
+    }
+}
