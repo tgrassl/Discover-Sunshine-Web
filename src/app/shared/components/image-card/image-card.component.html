@@ -1,4 +1,8 @@
-<div class="image-card" [title]="cardContent.title" [routerLink]="cardContent.link" [ngStyle]="{'background-image': 'url(' + cardContent.img +')'}">
+<div class="image-card" 
+(click)="prefillSearchData()"
+[title]="cardContent.title" 
+[routerLink]="cardContent.link" 
+[ngStyle]="{'background-image': 'url(' + cardContent.img +')'}">
     <div class="image-card__title">
         <h2>{{cardContent.title}}</h2>
     </div>

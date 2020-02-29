@@ -1,7 +1,7 @@
 import { Moment } from 'moment';
 
 export interface SearchData {
-    destination: SearchDataDestination;
+    destination?: SearchDataDestination;
     date: SearchDataDate;
     guests: SearchDataGuests;
 }
