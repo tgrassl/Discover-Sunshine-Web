@@ -44,6 +44,14 @@
     }
 }
 
+a.button {
+    &:hover {
+        color: var(--white);
+        text-decoration: none;
+    }
+}
+
+
 button[disabled], .button--loading {
     background-color: var(--grey);
     pointer-events: none;
