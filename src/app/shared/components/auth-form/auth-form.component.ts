@@ -52,7 +52,7 @@ export class AuthFormComponent implements OnInit {
       text: 'Noch keinen Account?',
       url: '/register',
       btn: 'Registrieren',
-      statusText: 'E-Mail oder Passwort falsch. Überprüfe deine Eingabe und versuchen es erneut.'
+      statusText: 'E-Mail oder Passwort falsch. Überprüfe deine Eingabe und versuche es erneut.'
     };
 
     const register = {

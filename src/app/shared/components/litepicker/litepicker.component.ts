@@ -31,7 +31,7 @@ export class LitepickerComponent implements OnInit, AfterViewInit {
     this.picker = new _Litepicker(
       {
         element: this.pickerRef.nativeElement,
-        format: 'MM.DD.YYYY',
+        format: 'DD.MM.YYYY',
         lang: 'de-DE',
         hotelMode: true,
         splitView: true,
