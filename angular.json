@@ -32,7 +32,9 @@
               "src/styles.scss",
               "src/assets/fonts/font.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/bcryptjs/dist/bcrypt.js"
+            ]
           },
           "configurations": {
             "production": {

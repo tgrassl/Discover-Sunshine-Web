@@ -26,6 +26,7 @@
     "@ngxs/devtools-plugin": "^3.6.2",
     "@ngxs/store": "^3.6.2",
     "@tinymce/tinymce-angular": "^3.4.0",
+    "@types/bcryptjs": "^2.4.2",
     "bcryptjs": "^2.4.3",
     "flexboxgrid-sass": "^8.0.5",
     "litepicker": "^1.0.29",

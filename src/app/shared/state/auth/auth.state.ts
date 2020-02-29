@@ -1,6 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Action, Selector, State, StateContext, NgxsOnInit, Actions, ofActionCompleted } from '@ngxs/store';
-import * as bcrypt from 'bcryptjs';
 import { throwError } from 'rxjs';
 import { catchError, take } from 'rxjs/operators';
 import { User } from '../../models/user.model';
@@ -96,8 +95,8 @@ export class AuthState implements NgxsOnInit {
         return throwError(err);
       }))
       .subscribe(async (data) => {
-        data = JSON.parse(data);
-        const result = await bcrypt.compare(action.pwd, data.pwd);
+        data = JSON.parse(JSON.stringify(data));
+        const result = (window as any).dcodeIO.bcrypt.compareSync(action.pwd, data.pwd);
         if (result) {
           await ctx.dispatch(new GetUserAction(data.id));
           await this.actions.pipe(ofActionCompleted(SetUserAction), take(1)).toPromise();
@@ -124,7 +123,7 @@ export class AuthState implements NgxsOnInit {
         return throwError(err);
       }))
       .subscribe(async (data: any) => {
-        const userResponse: User = JSON.parse(data);
+        const userResponse: User = JSON.parse(JSON.stringify(data));
         await ctx.dispatch(new SetUserAction(userResponse));
         const user = ctx.getState().user;
         if (user) {
@@ -175,7 +174,7 @@ export class AuthState implements NgxsOnInit {
   }
 
   private async hashPassword(pw: string): Promise<string> {
-    return await bcrypt.hash(pw, this.getRandomSaltRounds());
+    return await (window as any).dcodeIO.bcrypt.hash(pw, this.getRandomSaltRounds());
   }
 
   private getRandomSaltRounds(): number {
