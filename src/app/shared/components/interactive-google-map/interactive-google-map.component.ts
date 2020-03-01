@@ -235,7 +235,7 @@ export class InteractiveGoogleMapComponent implements OnInit, OnChanges, AfterVi
   }
 
   public canShowAutoSearchButton(): boolean {
-    return this.listings && this.store.selectSnapshot(ApplicationState.applicationState) !== APPLICATION_STATE.INITIAL;
+    return this.listings.length > 0;
   }
 
   public toggleAutoSearch(): void {
