@@ -1,3 +1,4 @@
+import { isMobile } from 'src/app/shared/util';
 import { SetSearchDataAction } from './../../state/search/search.actions';
 import { ApplicationState } from './../../state/application/application.state';
 import { isMobile } from './../../util';
@@ -23,6 +24,7 @@ import { SearchState } from '../../state/search/search.state';
 import { Listing } from './../../models/listing.model';
 import { ToggleMobileMapAction } from '../../state/search/search.actions';
 import { APPLICATION_STATE } from '../../state/application/application.state';
+import { utils } from 'protractor';
 
 @Component({
   selector: 'app-interactive-google-map',
@@ -40,10 +42,12 @@ export class InteractiveGoogleMapComponent implements OnInit, OnChanges, AfterVi
   @Select(SearchState.highlightedListing) highlightedListing$: Observable<Listing>;
   @Input() listings: Listing[] = [];
 
-  @ViewChild(MapInfoWindow, {static: false}) infoWindow: MapInfoWindow;
+  @ViewChild(MapInfoWindow, { static: false }) infoWindow: MapInfoWindow;
   @ViewChild('map') map: GoogleMap;
   @ViewChildren('marker') marker: QueryList<MapMarker>;
 
+  public isDraggingMap = false;
+  public autoSearchEnabled = false;
   public mapMarkers = [];
   public infoListing: Listing;
   public markerOptions = { draggable: false, icon: InteractiveGoogleMapComponent.DEFAULT_MARKER_ICON };
@@ -64,11 +68,11 @@ export class InteractiveGoogleMapComponent implements OnInit, OnChanges, AfterVi
   private center: LatLngLiteral = { lat: 47.279229, lng: 12 };
   private subs: Subscription[] = [];
   private listingMarker: MapMarker[] = [];
-  public isDraggingMap = false;
 
-  constructor(private store: Store) {}
+  constructor(private store: Store) { }
 
   public ngOnInit(): void {
+    this.checkAndSetAutoSearch();
     this.setFallBackListings();
     this.handleMarkerHovering();
   }
@@ -91,10 +95,14 @@ export class InteractiveGoogleMapComponent implements OnInit, OnChanges, AfterVi
     this.handleListingChange();
   }
 
+  private checkAndSetAutoSearch(): void {
+    this.autoSearchEnabled = !isMobile;
+  }
+
   private handleListingChange(): void {
     this.mapMarkers = [];
     this.infoListing = null;
-    
+
     if (this.listings) {
       this.bounds = new google.maps.LatLngBounds();
       this.listings.forEach(listing => {
@@ -198,7 +206,7 @@ export class InteractiveGoogleMapComponent implements OnInit, OnChanges, AfterVi
     const SW = viewPortBunds.getSouthWest();
     const NE = viewPortBunds.getNorthEast();
 
-    const searchData = {...this.store.selectSnapshot(SearchState.searchData)};
+    const searchData = { ...this.store.selectSnapshot(SearchState.searchData) };
     searchData.bounds = {
       topLeft: NE.lat(),
       topRight: SW.lng(),
@@ -209,12 +217,28 @@ export class InteractiveGoogleMapComponent implements OnInit, OnChanges, AfterVi
     this.store.dispatch(new SetSearchDataAction(searchData));
   }
 
+  public onMapDragEnd(): void {
+    this.isDraggingMap = false;
+
+    if (this.autoSearchEnabled) {
+      this.searchInArea();
+    }
+  }
+
   public isLoading(): boolean {
     return this.isDraggingMap || this.store.selectSnapshot(ApplicationState.applicationState) === APPLICATION_STATE.PENDING;
   }
 
   public showSearchBoundButton() {
     const appState = this.store.selectSnapshot(ApplicationState.applicationState);
-    return appState !== APPLICATION_STATE.INITIAL && appState !== APPLICATION_STATE.ERROR;
+    return !this.autoSearchEnabled && appState !== APPLICATION_STATE.INITIAL && appState !== APPLICATION_STATE.ERROR;
+  }
+
+  public canShowAutoSearchButton(): boolean {
+    return this.listings && this.store.selectSnapshot(ApplicationState.applicationState) !== APPLICATION_STATE.INITIAL;
+  }
+
+  public toggleAutoSearch(): void {
+    this.autoSearchEnabled = !this.autoSearchEnabled;
   }
 }

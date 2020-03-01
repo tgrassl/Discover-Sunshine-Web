@@ -3,6 +3,13 @@
     <span>Liste</span>
 </div>
 
+<div class="map-auto-search hide-xs" *ngIf="canShowAutoSearchButton()">
+    <label class="checkmark-container">Autom. Suche
+        <input type="checkbox" checked="checked" (change)="toggleAutoSearch()">
+        <span class="checkmark"></span>
+      </label>      
+</div>
+
 <ng-container *ngIf="showSearchBoundButton()">
     <button class="button map-search-area" [disabled]="isDraggingMap" [class.button--loading]="isLoading()" (click)="searchInArea()">
         <app-loading-spinner [loading]="isLoading()"></app-loading-spinner>
@@ -13,7 +20,7 @@
 
 <google-map #map height="92.5vh" width="100%" [options]="mapOptions" 
 (mapDragstart)="isDraggingMap = true"
-(mapDragend)="isDraggingMap = false">
+(mapDragend)="onMapDragEnd()">
     <map-marker #marker *ngFor="let marker of mapMarkers" (mapClick)="openInfoWindow(marker)"
         [position]="marker.position" [options]="marker.options">
     </map-marker>

@@ -51,17 +51,25 @@ app-interactive-google-map {
     }
 }
 
-.map-close-mobile {
+.map-auto-search {
+    right: .5rem;
+    padding: 5px 10px;
+}
+
+.map-close-mobile, .map-auto-search {
     position: fixed;
     z-index: 95;
     background: #ffffff;
     color: var(--text);
     top: calc(var(--nav-height) + 10px);
-    left: 20px;
     border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+}
+
+.map-close-mobile {
+    left: 20px;
     padding-right: 0.8rem;
     font-weight: bold;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
     transition: color 0.1s ease-in;
 
     &:hover {
