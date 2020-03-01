@@ -1,4 +1,3 @@
-import { SearchData } from 'src/app/shared/models/searchData.model';
 import { ApplicationState, APPLICATION_STATE } from './../../state/application/application.state';
 import { SearchData } from './../../models/searchData.model';
 import { NumberSelectConfig } from './../number-select/number-select.component';
