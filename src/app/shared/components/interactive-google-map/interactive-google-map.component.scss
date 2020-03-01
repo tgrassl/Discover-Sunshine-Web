@@ -1,5 +1,28 @@
 @import "../../../../styles/functions/functions";
 
+$map-height: 92.5vh;
+
+app-interactive-google-map {
+    position: fixed;
+    bottom: 0;
+    display: block;
+    right: 0;
+    top: var(--nav-height);
+    width: auto;
+    height: $map-height;
+    left: 50%;
+
+    @include mobile() {
+        position: relative;
+        bottom: 0;
+        right: 0;
+        top: 0;
+        width: auto;
+        height: 0;
+        left: 0;
+    }
+}
+
 .map-container {
     position: sticky !important;
     top: var(--nav-height) !important;
@@ -8,6 +31,23 @@
         height: 100vh !important;
         z-index: 90 !important;
         position: fixed !important;
+    }
+}
+
+.map-search-area {
+    position: absolute;
+    bottom: 50px;
+    z-index: 95;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+
+    @include mobile() {
+        position: fixed;
+        bottom: 2rem;
+        width: 75%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 
@@ -22,7 +62,7 @@
     padding-right: 0.8rem;
     font-weight: bold;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
-    transition: color .1s ease-in;
+    transition: color 0.1s ease-in;
 
     &:hover {
         color: var(--text-hover);
@@ -35,7 +75,11 @@
 }
 
 .gm-style .gm-style-iw-t::after {
-    background: linear-gradient(45deg,rgba(255,255,255,1) 100%,rgba(255,255,255,0) 100%) !important;;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 1) 100%,
+        rgba(255, 255, 255, 0) 100%
+    ) !important;
 }
 
 .gm-style-iw-d {

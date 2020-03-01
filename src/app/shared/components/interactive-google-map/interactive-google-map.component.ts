@@ -1,3 +1,5 @@
+import { SetSearchDataAction } from './../../state/search/search.actions';
+import { ApplicationState } from './../../state/application/application.state';
 import { isMobile } from './../../util';
 import {
   AfterViewInit,
@@ -20,6 +22,7 @@ import { distinctUntilChanged } from 'rxjs/operators';
 import { SearchState } from '../../state/search/search.state';
 import { Listing } from './../../models/listing.model';
 import { ToggleMobileMapAction } from '../../state/search/search.actions';
+import { APPLICATION_STATE } from '../../state/application/application.state';
 
 @Component({
   selector: 'app-interactive-google-map',
@@ -44,7 +47,7 @@ export class InteractiveGoogleMapComponent implements OnInit, OnChanges, AfterVi
   public mapMarkers = [];
   public infoListing: Listing;
   public markerOptions = { draggable: false, icon: InteractiveGoogleMapComponent.DEFAULT_MARKER_ICON };
-  public bounds: LatLngBounds = new google.maps.LatLngBounds();
+  public bounds: LatLngBounds;
   public mapOptions: google.maps.MapOptions = {
     minZoom: 3,
     maxZoom: 17,
@@ -61,6 +64,7 @@ export class InteractiveGoogleMapComponent implements OnInit, OnChanges, AfterVi
   private center: LatLngLiteral = { lat: 47.279229, lng: 12 };
   private subs: Subscription[] = [];
   private listingMarker: MapMarker[] = [];
+  public isDraggingMap = false;
 
   constructor(private store: Store) {}
 
@@ -92,6 +96,7 @@ export class InteractiveGoogleMapComponent implements OnInit, OnChanges, AfterVi
     this.infoListing = null;
     
     if (this.listings) {
+      this.bounds = new google.maps.LatLngBounds();
       this.listings.forEach(listing => {
         const listingPosition: LatLngLiteral = this.getListingPosition(listing);
         this.mapMarkers.push({
@@ -164,7 +169,7 @@ export class InteractiveGoogleMapComponent implements OnInit, OnChanges, AfterVi
 
   private checkAndFitBounds(): void {
     if (this.map) {
-      if (this.bounds.isEmpty()) {
+      if (!this.bounds || (this.bounds && this.bounds.isEmpty())) {
         this.map._googleMap.setCenter(this.center);
         this.map._googleMap.setZoom(InteractiveGoogleMapComponent.DEFAULT_ZOOM);
       } else {
@@ -186,5 +191,30 @@ export class InteractiveGoogleMapComponent implements OnInit, OnChanges, AfterVi
 
   public closeMap(): void {
     this.store.dispatch(new ToggleMobileMapAction());
+  }
+
+  public searchInArea(): void {
+    const viewPortBunds = this.map.getBounds();
+    const SW = viewPortBunds.getSouthWest();
+    const NE = viewPortBunds.getNorthEast();
+
+    const searchData = {...this.store.selectSnapshot(SearchState.searchData)};
+    searchData.bounds = {
+      topLeft: NE.lat(),
+      topRight: SW.lng(),
+      bottomLeft: SW.lat(),
+      bottomRight: NE.lng()
+    };
+
+    this.store.dispatch(new SetSearchDataAction(searchData));
+  }
+
+  public isLoading(): boolean {
+    return this.isDraggingMap || this.store.selectSnapshot(ApplicationState.applicationState) === APPLICATION_STATE.PENDING;
+  }
+
+  public showSearchBoundButton() {
+    const appState = this.store.selectSnapshot(ApplicationState.applicationState);
+    return appState !== APPLICATION_STATE.INITIAL && appState !== APPLICATION_STATE.ERROR;
   }
 }

@@ -22,10 +22,15 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   public getListings(search: SearchData): Observable<Listing[]> {
-    return this.http.get<Listing[]>(
-      this.getFullUrl(
-        `listings?dest=${search.destination.name}&lat=${search.destination.lat}&lng=${search.destination.lng}&start=${this.getFormattedDate(search.date.start)}&end=${this.getFormattedDate(search.date.end)}&guests=${search.guests.total}`
-      ));
+    const searchBounds = search.bounds;
+    let fullUrl = this.getFullUrl(
+      `listings?dest=${search.destination.name}&lat=${search.destination.lat}&lng=${search.destination.lng}&start=${this.getFormattedDate(search.date.start)}&end=${this.getFormattedDate(search.date.end)}&guests=${search.guests.total}`
+    );
+    if (searchBounds) {
+      const boundsParams = `&tl=${searchBounds.topLeft}&tr=${searchBounds.topRight}&bl=${searchBounds.bottomLeft}&br=${searchBounds.bottomRight}`;
+      fullUrl += boundsParams;
+    }
+    return this.http.get<Listing[]>(fullUrl);
   }
 
   public getUser(uid: number): Observable<User> {

@@ -2,7 +2,18 @@
     <i class='uil uil-angle-left'></i>
     <span>Liste</span>
 </div>
-<google-map #map height="92.5vh" width="100%" [options]="mapOptions">
+
+<ng-container *ngIf="showSearchBoundButton()">
+    <button class="button map-search-area" [disabled]="isDraggingMap" [class.button--loading]="isLoading()" (click)="searchInArea()">
+        <app-loading-spinner [loading]="isLoading()"></app-loading-spinner>
+        <span>In diesem Bereich suchen</span>
+    </button>
+</ng-container>
+
+
+<google-map #map height="92.5vh" width="100%" [options]="mapOptions" 
+(mapDragstart)="isDraggingMap = true"
+(mapDragend)="isDraggingMap = false">
     <map-marker #marker *ngFor="let marker of mapMarkers" (mapClick)="openInfoWindow(marker)"
         [position]="marker.position" [options]="marker.options">
     </map-marker>

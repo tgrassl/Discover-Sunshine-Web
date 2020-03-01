@@ -52,6 +52,10 @@ export class SearchBarComponent implements OnInit, OnDestroy {
       this.searchForm.patchValue(previousSearch, { emitEvent: false });
     }
 
+    this.initMapMode();
+  }
+
+  private initMapMode(): void {
     if (this.mapMode) {
       if (this.store.selectSnapshot(ApplicationState.applicationState) === APPLICATION_STATE.INITIAL) {
         this.searchForm.markAllAsTouched();
