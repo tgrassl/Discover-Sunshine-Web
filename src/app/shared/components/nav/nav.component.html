@@ -11,12 +11,12 @@
                 </div>
             </li>
 
-            <li *ngIf="isLoggedIn$ | async" class="nav__item">
+            <!-- <li *ngIf="isLoggedIn$ | async" class="nav__item">
                 <div class="nav-button hide-xs" [routerLink]="['/saved']">
                     <i class='uil uil-heart nav-button__icon'></i>
                     <span class="nav-button__text">Gespeichert</span>
                 </div>
-            </li>
+            </li> -->
 
             <li *ngIf="isLoggedIn$ | async" class="nav__item">
                 <div class="nav-button" [routerLink]="['/notes']">
@@ -56,12 +56,12 @@
             </div>
         </li>
 
-        <li *ngIf="isLoggedIn$ | async" class="mobile-menu__item">
+        <!-- <li *ngIf="isLoggedIn$ | async" class="mobile-menu__item">
             <div class="nav-button hide-xs" [routerLink]="['/saved']" (click)="toggleMobileNav()">
                 <i class='uil uil-heart nav-button__icon'></i>
                 <span class="nav-button__text">Gespeichert</span>
             </div>
-        </li>
+        </li> -->
 
         <li *ngIf="isLoggedIn$ | async" class="mobile-menu__item">
             <div class="nav-button" [routerLink]="['/notes']" (click)="toggleMobileNav()">
