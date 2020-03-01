@@ -1,3 +1,5 @@
+import { SearchData } from 'src/app/shared/models/searchData.model';
+import { ApplicationState, APPLICATION_STATE } from './../../state/application/application.state';
 import { SearchData } from './../../models/searchData.model';
 import { NumberSelectConfig } from './../number-select/number-select.component';
 import { SetSearchDataAction } from './../../state/search/search.actions';
@@ -7,7 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { Router } from '@angular/router';
 import { SearchState } from '../../state/search/search.state';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -47,13 +49,18 @@ export class SearchBarComponent implements OnInit, OnDestroy {
 
     const previousSearch = this.store.selectSnapshot(SearchState.searchData);
     if (previousSearch) {
-      this.searchForm.patchValue(previousSearch);
+      this.searchForm.patchValue(previousSearch, { emitEvent: false });
     }
 
     if (this.mapMode) {
-      this.searchForm.markAllAsTouched();
+      if (this.store.selectSnapshot(ApplicationState.applicationState) === APPLICATION_STATE.INITIAL) {
+        this.searchForm.markAllAsTouched();
+      }
+
       this.subs.push(this.searchForm.valueChanges
-        .pipe(debounceTime(SearchBarComponent.KEY_DEBOUNCE))
+        .pipe(
+          debounceTime(SearchBarComponent.KEY_DEBOUNCE),
+          distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b)))
         .subscribe(() => {
           this.submitForm();
         }));

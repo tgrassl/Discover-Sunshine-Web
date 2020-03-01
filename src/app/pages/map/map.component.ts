@@ -38,7 +38,7 @@ export class MapComponent implements OnDestroy {
 
   public canShowWarning(): boolean {
     const listings = this.store.selectSnapshot(SearchState.listings);
-    return listings && listings.length < 1;
+    return listings && listings.length < 1 && !this.isLoading();
   }
 
   public canShowError(): boolean {
