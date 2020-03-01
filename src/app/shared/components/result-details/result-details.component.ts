@@ -3,7 +3,7 @@ import { Store } from '@ngxs/store';
 import { SearchState } from 'src/app/shared/state/search/search.state';
 import { SearchData } from './../../models/searchData.model';
 import { Listing } from 'src/app/shared/models/listing.model';
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, OnChanges } from '@angular/core';
 import { SatPopover } from '@ncstate/sat-popover';
 import { getRating } from '../../util';
 
@@ -13,7 +13,7 @@ import { getRating } from '../../util';
   styleUrls: ['./result-details.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class ResultDetailsComponent implements OnInit {
+export class ResultDetailsComponent implements OnInit, OnChanges {
 
   @Input() listing: Listing;
   @Input() targetRef: SatPopover;
@@ -35,8 +35,11 @@ export class ResultDetailsComponent implements OnInit {
   constructor(private store: Store) { }
 
   ngOnInit(): void {
-    this.searchData = this.store.selectSnapshot(SearchState.searchData);
     this.listingRating = getRating(this.listing);
+  }
+
+  ngOnChanges(): void {
+    this.searchData = this.store.selectSnapshot(SearchState.searchData);
   }
 
   public getAmenityIcon(amenity: Amenity): string {
