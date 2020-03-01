@@ -1,4 +1,3 @@
-import { isMobile } from 'src/app/shared/util';
 import { SetSearchDataAction } from './../../state/search/search.actions';
 import { ApplicationState } from './../../state/application/application.state';
 import { isMobile } from './../../util';
@@ -24,7 +23,6 @@ import { SearchState } from '../../state/search/search.state';
 import { Listing } from './../../models/listing.model';
 import { ToggleMobileMapAction } from '../../state/search/search.actions';
 import { APPLICATION_STATE } from '../../state/application/application.state';
-import { utils } from 'protractor';
 
 @Component({
   selector: 'app-interactive-google-map',
