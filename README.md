@@ -18,4 +18,4 @@ You can find a working demo of this project here:
 Run `npm run build:prod` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 
-*Any commited API keys are rescrited and useless for anyone else 😉 Please replace them with your own.*
+*Any commited API keys are restricted and useless for anyone else 😉 Please replace them with your own.*
