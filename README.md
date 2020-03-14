@@ -11,6 +11,7 @@ You can find a working demo of this project here:
 - [NGXS](https://www.ngxs.io/)
 - [Flexboxgrid-sass](http://hugeinc.github.io/flexboxgrid-sass)
 - [Tiny MCE](https://www.tiny.cloud/)
+- [Unicons](https://iconscout.com/unicons)
 
 ## Build
 
