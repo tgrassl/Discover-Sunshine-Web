@@ -4,7 +4,7 @@ Discover Sunshine is a travel portal made in one week for a school project.
 
 ## Demo
 You can find a working demo of this project here:
-[https://discover-sunshine.netlify.com/](https://discover-sunshine.netlify.com/)
+[https://discover-sunshine.netlify.app/](https://discover-sunshine.netlify.app/)
 
 ## Tech Stack
 - [Angular 9](http://angular.io/)
