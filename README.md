@@ -1,4 +1,4 @@
-![](https://i.ibb.co/f0xGgDf/discover-sunshine-banner.png)
+![](/banner.png)
 
 Discover Sunshine is a travel portal made in one week for a school project.
 
